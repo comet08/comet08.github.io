@@ -1,0 +1,50 @@
+[
+  {
+    "category": "Frontend Core",
+    "icon": "Monitor",
+    "description": "사용자 인터페이스를 구성하는 핵심 기술 스택",
+    "skills": [
+      { "name": "React", "level": "expert" },
+      { "name": "Next.js", "level": "expert" },
+      { "name": "TypeScript", "level": "expert" },
+      { "name": "Tailwind CSS", "level": "expert" },
+      { "name": "WebSocket / SSE", "level": "proficient" }
+    ]
+  },
+  {
+    "category": "AI Agent",
+    "icon": "Brain",
+    "description": "LLM 기반 에이전트 시스템 및 인터페이스 구축",
+    "skills": [
+      { "name": "Vercel AI SDK", "level": "expert" },
+      { "name": "LangChain / LangGraph", "level": "proficient" },
+      { "name": "Prompt Engineering", "level": "proficient" },
+      { "name": "SSE Streaming", "level": "expert" },
+      { "name": "RAG", "level": "learning" }
+    ]
+  },
+  {
+    "category": "Architecture",
+    "icon": "Layers",
+    "description": "애플리케이션 구조 설계 및 상태 관리",
+    "skills": [
+      { "name": "Turborepo / Monorepo", "level": "proficient" },
+      { "name": "FSD", "level": "proficient" },
+      { "name": "Zustand", "level": "expert" },
+      { "name": "React Query", "level": "expert" }
+    ]
+  },
+  {
+    "category": "Tooling",
+    "icon": "Wrench",
+    "description": "빌드, 테스트, 배포 파이프라인",
+    "skills": [
+      { "name": "Vite / Webpack", "level": "proficient" },
+      { "name": "bun", "level": "proficient" },
+      { "name": "MSW", "level": "proficient" },
+      { "name": "openapi-generator", "level": "proficient" },
+      { "name": "GitHub Actions", "level": "proficient" },
+      { "name": "Docker", "level": "proficient" }
+    ]
+  }
+]

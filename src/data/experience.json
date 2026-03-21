@@ -1,0 +1,56 @@
+[
+  {
+    "id": "lguplus-saas",
+    "company": "LG U+",
+    "role": "Frontend Developer / Tech Lead",
+    "team": "CX SaaS개발팀",
+    "period": "2025 ~",
+    "startDate": "2025-07",
+    "endDate": null,
+    "isCurrent": true,
+    "description": "AICC(상담어드바이저, AI헬프데스크), KMS 서비스 개발 및 테크리드 역할 수행.",
+    "highlights": [
+      "상담어드바이저, AI헬프데스크, KMS 서비스 프론트엔드 개발",
+      "AICC Assist Agent 개발 — LLM 기반 상담 지원 에이전트 설계 및 구현",
+      "테크리드로서 기술 방향 수립, 코드 리뷰 주도, 파트 빌딩",
+      "랩 프론트엔드 테크아고라 진행 — 기술 공유 문화 형성"
+    ],
+    "tech": ["React", "TypeScript", "Next.js", "Vercel AI SDK", "Turborepo", "pnpm"]
+  },
+  {
+    "id": "lguplus-cx",
+    "company": "LG U+",
+    "role": "Frontend Developer",
+    "team": "CX FE개발팀",
+    "period": "2024 ~ 2025",
+    "startDate": "2024-05",
+    "endDate": "2025-06",
+    "isCurrent": false,
+    "description": "AICC 서비스(상담어드바이저, AI헬프데스크) 앱/웹뷰 개발.",
+    "highlights": [
+      "turbo+pnpm 모노레포 구조 설계 — 9개 서비스까지 확장 가능한 베이스 마련",
+      "bun 기반 STOMP mock 서버 및 UI Devtool 개발, 백엔드 없이 실시간 기능 검증",
+      "openapi-generator 도입으로 API 타입 자동화, 휴먼 에러 제거",
+      "MSW GUI Controller 패키지 개발 — mock 응답을 GUI에서 관리·프리셋 재사용",
+      "Vercel ai-sdk 내부 분석 후 커스텀 SSE 스트리밍 구현, 상담 Assist 기능 개발",
+      "구현한 SSE 처리 로직을 패키지화해 사내 에이전트 SDK(a2kit) 설계에 기여"
+    ],
+    "tech": ["React", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "bun", "MSW", "STOMP", "WebSocket", "SSE"]
+  },
+  {
+    "id": "lguplus-nugget",
+    "company": "LG U+",
+    "role": "Frontend Developer",
+    "team": "디지털통신FE개발팀",
+    "period": "2023 ~ 2024",
+    "startDate": "2023-03",
+    "endDate": "2024-02",
+    "isCurrent": false,
+    "description": "너겟 크로스플랫폼 앱/웹뷰 개발.",
+    "highlights": [
+      "너겟 서비스 앱/웹뷰 프론트엔드 개발",
+      "크로스플랫폼 환경에서의 웹뷰 최적화"
+    ],
+    "tech": ["React", "TypeScript", "WebView"]
+  }
+]

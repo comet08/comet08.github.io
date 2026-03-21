@@ -1,0 +1,31 @@
+[
+  {
+    "slug": "consulting-advisor",
+    "title": "상담어드바이저",
+    "description": "LG U+ AICC 플랫폼의 핵심 프론트엔드 서비스. 모노레포 아키텍처 설계부터 실시간 개발 인프라, LLM 기반 상담 Assist 기능까지 전반을 설계하고 개발했습니다.",
+    "tech": ["React", "TypeScript", "Turborepo", "pnpm", "Vercel AI SDK", "SSE", "WebSocket", "MSW", "bun"],
+    "github": "",
+    "demo": "",
+    "isPrivate": true,
+    "featured": true,
+    "period": "2024.04 ~",
+    "tags": ["AICC", "LLM", "Monorepo"],
+    "subProjects": [
+      {
+        "title": "모노레포 아키텍처 구성",
+        "description": "turbo+pnpm 모노레포와 FSD 아키텍처를 기반으로 9개 서비스까지 확장 가능한 레포 구조 설계. 공통 패키지, Docker 빌드 체커, turbo cache 적용.",
+        "result": "9개 서비스까지 확장, 온보딩 및 빌드 비용 절감"
+      },
+      {
+        "title": "WebSocket / REST API Mock 인프라",
+        "description": "bun 기반 STOMP mock 서버 및 UI Devtool 개발. openapi-generator로 타입 자동화, MSW GUI Controller 패키지 개발로 mock 응답을 GUI에서 관리·프리셋 재사용.",
+        "result": "백엔드 없이 실시간·REST API 독립 개발 가능, 타입 휴먼 에러 제거"
+      },
+      {
+        "title": "상담 Assist 기능 (SSE 스트리밍)",
+        "description": "Vercel ai-sdk 내부 분석 후 커스텀 SSE 스트리밍·마크다운 렌더링·추천 메시지 구조를 설계하고 패키지화. 재렌더링 최소화를 위한 메모이제이션 적용.",
+        "result": "여러 서비스 재사용 가능한 공통 기반 마련, 사내 에이전트 SDK(a2kit) 설계 기여"
+      }
+    ]
+  }
+]
