@@ -6,8 +6,8 @@ const isGithubActions = process.env.GITHUB_ACTIONS === "true";
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  basePath: isGithubActions ? "/portfolio" : "",
-  assetPrefix: isGithubActions ? "/portfolio" : "",
+  basePath: isGithubActions ? "/comet-blog" : "",
+  assetPrefix: isGithubActions ? "/comet-blog" : "",
   images: { unoptimized: true },
 };
 
