@@ -5,11 +5,9 @@ import { motion, useScroll, useSpring } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
-  { label: 'About', href: '/about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '#about' },
+  { label: 'Blog', href: '/blog' },
 ]
 
 export default function Navigation() {
@@ -27,21 +25,25 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled
-          ? 'bg-[#ffffff]/90 backdrop-blur-md border-b border-[#e0ddd8]'
+          ? 'bg-[#F0F6FF]/90 backdrop-blur-md border-b border-[#C0D8F0]'
           : 'bg-transparent'
       }`}
     >
       {/* Scroll progress bar */}
       <motion.div
-        className="absolute top-0 left-0 right-0 h-[2px] bg-[#0a0a0a] origin-left z-50"
+        className="absolute top-0 left-0 right-0 h-[1px] bg-[#1677C8] origin-left z-50"
         style={{ scaleX }}
       />
 
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="/about" className="font-mono text-sm text-[#0a0a0a] hover:opacity-70 transition-opacity">
+        <a
+          href="/about"
+          className="text-sm text-[#1677C8] hover:opacity-70 transition-opacity tracking-[0.3em] uppercase"
+          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+        >
           sp.
         </a>
 
@@ -51,7 +53,8 @@ export default function Navigation() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-[#888888] hover:text-[#1a1a1a] transition-colors"
+                className="text-[10px] text-[#6899BC] hover:text-[#0D2236] transition-colors tracking-[0.25em] uppercase"
+                style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
               >
                 {link.label}
               </a>
@@ -59,26 +62,30 @@ export default function Navigation() {
           ))}
         </ul>
 
-
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-[#1a1a1a] p-1"
+          className="md:hidden text-[#1A3A52] p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
         >
-          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          {menuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </nav>
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#f7f6f3] border-t border-[#e0ddd8] px-6 py-6">
-          <ul className="flex flex-col gap-5">
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden bg-[#E4EFFC] border-t border-[#C0D8F0] px-6 py-8"
+        >
+          <ul className="flex flex-col gap-6">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-[#1a1a1a] text-sm hover:text-[#0a0a0a] transition-colors"
+                  className="text-sm text-[#6899BC] hover:text-[#1677C8] transition-colors tracking-[0.25em] uppercase"
+                  style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -86,7 +93,7 @@ export default function Navigation() {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       )}
     </header>
   )

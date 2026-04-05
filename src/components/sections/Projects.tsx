@@ -1,48 +1,52 @@
 'use client'
 
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import projects from '@/data/projects.json'
 import type { Project } from '@/types'
 
 const data = projects as Project[]
 
-function TiltCard({ children }: { children: React.ReactNode }) {
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [4, -4]), { stiffness: 300, damping: 30 })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-4, 4]), { stiffness: 300, damping: 30 })
-
-  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect()
-    x.set((e.clientX - rect.left) / rect.width - 0.5)
-    y.set((e.clientY - rect.top) / rect.height - 0.5)
-  }
-
-  return (
-    <motion.div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={() => { x.set(0); y.set(0) }}
-      style={{ rotateX, rotateY, perspective: 1000 }}
-      className="transform-gpu"
-    >
-      {children}
-    </motion.div>
-  )
-}
-
 export default function Projects() {
   const featured = data.filter((p) => p.featured)
+  const [expanded, setExpanded] = useState<string | null>(featured[0]?.slug ?? null)
 
   return (
-    <section id="projects" className="py-24 border-t border-[#e0ddd8]">
-      <div className="max-w-6xl mx-auto px-6">
-        <p className="font-mono text-xs text-[#888888] mb-3">04 / projects</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-[#0a0a0a] mb-16">
-          주요 프로젝트
-        </h2>
+    <section id="projects" className="py-32 border-t border-[#C0D8F0] relative overflow-hidden">
+      {/* Decorative number */}
+      <div
+        aria-hidden
+        className="absolute -right-8 top-4 text-[22vw] font-extrabold text-[#0D2236]/[0.04] leading-none select-none pointer-events-none"
+        style={{ fontFamily: 'var(--font-syne)' }}
+      >
+        04
+      </div>
 
-        <div className="space-y-8">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-[#6899BC] text-[10px] tracking-[0.5em] uppercase mb-16"
+          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+        >
+          04 / Projects
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="text-4xl md:text-5xl font-extrabold text-[#0D2236] mb-20 tracking-tight"
+          style={{ fontFamily: 'var(--font-syne)' }}
+        >
+          주요 프로젝트
+        </motion.h2>
+
+        <div>
           {featured.map((project, idx) => (
             <motion.div
               key={project.slug}
@@ -50,72 +54,108 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, ease: 'easeOut', delay: idx * 0.08 }}
+              className="border-t border-[#C0D8F0]"
             >
-              <TiltCard>
-                <article className="border border-[#e0ddd8] rounded-lg bg-[#f7f6f3] overflow-hidden">
-                  {/* Header */}
-                  <div className="px-8 pt-8 pb-6 border-b border-[#e0ddd8]">
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <h3 className="text-xl font-semibold text-[#0a0a0a]">
-                        {project.title}
-                      </h3>
-                      <div className="flex items-center gap-2 shrink-0 mt-0.5">
-                        {project.isPrivate && (
-                          <span className="text-xs font-mono px-2 py-0.5 border border-[#e0ddd8] text-[#888888] rounded">
-                            사내 프로젝트
-                          </span>
-                        )}
-                        {project.period && (
-                          <span className="text-xs font-mono text-[#888888]">
-                            {project.period}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <p className="text-sm text-[#888888] leading-relaxed mb-5">
+              {/* Project row */}
+              <button
+                className="w-full py-10 flex items-start justify-between gap-6 text-left group"
+                onClick={() => setExpanded(expanded === project.slug ? null : project.slug)}
+              >
+                <div className="flex items-start gap-8 flex-1 min-w-0">
+                  <span
+                    className="text-[10px] text-[#A4C4E4] mt-3 shrink-0 w-6"
+                    style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                  >
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <h3
+                      className="text-2xl md:text-3xl font-bold text-[#0D2236] group-hover:text-[#1677C8] transition-colors duration-300 mb-3 tracking-tight"
+                      style={{ fontFamily: 'var(--font-syne)' }}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className="text-sm text-[#1A3A52]/55 leading-relaxed max-w-2xl mb-4"
+                      style={{ fontFamily: 'var(--font-ibm-plex-serif)' }}
+                    >
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((t) => (
+                    <div className="flex flex-wrap gap-2 items-center">
+                      {project.tech.slice(0, 7).map((t) => (
                         <span
                           key={t}
-                          className="text-xs px-2 py-1 bg-white border border-[#e0ddd8] text-[#888888] rounded font-mono"
+                          className="text-[10px] px-2.5 py-1 border border-[#C0D8F0] text-[#6899BC]"
+                          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                         >
                           {t}
                         </span>
                       ))}
+                      {project.isPrivate && (
+                        <span
+                          className="text-[10px] px-2.5 py-1 border border-[#1677C8]/15 text-[#1677C8]/50"
+                          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                        >
+                          private
+                        </span>
+                      )}
                     </div>
                   </div>
+                </div>
+                <div
+                  className={`mt-3 text-[#6899BC] transition-all duration-300 shrink-0 ${
+                    expanded === project.slug ? 'rotate-180 text-[#1677C8]' : ''
+                  }`}
+                >
+                  <ChevronDown size={16} />
+                </div>
+              </button>
 
-                  {/* Sub-projects */}
-                  {project.subProjects && project.subProjects.length > 0 && (
-                    <div className="divide-y divide-[#e0ddd8]">
+              {/* Expanded sub-projects */}
+              <AnimatePresence>
+                {expanded === project.slug && project.subProjects && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-10 pl-14 space-y-0">
                       {project.subProjects.map((sub, i) => (
-                        <div key={i} className="px-8 py-5 group hover:bg-[#f0eee9] transition-colors">
-                          <div className="flex items-start gap-4">
-                            <span className="font-mono text-xs text-[#e0ddd8] group-hover:text-[#888888] transition-colors mt-0.5 shrink-0 w-4">
-                              {String(i + 1).padStart(2, '0')}
-                            </span>
-                            <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-[#0a0a0a] mb-1.5">
-                                {sub.title}
-                              </p>
-                              <p className="text-xs text-[#888888] leading-relaxed mb-2">
-                                {sub.description}
-                              </p>
-                              <p className="text-xs text-[#0a0a0a] font-mono">
-                                → {sub.result}
-                              </p>
-                            </div>
+                        <div
+                          key={i}
+                          className="grid md:grid-cols-[1fr_auto] gap-6 items-start border-l border-[#1677C8]/15 pl-6 py-5 hover:border-[#1677C8]/40 transition-colors group/sub"
+                        >
+                          <div>
+                            <p
+                              className="text-sm font-bold text-[#1A3A52] mb-2 group-hover/sub:text-[#0D2236] transition-colors"
+                              style={{ fontFamily: 'var(--font-syne)' }}
+                            >
+                              {sub.title}
+                            </p>
+                            <p
+                              className="text-sm text-[#1A3A52]/50 leading-relaxed"
+                              style={{ fontFamily: 'var(--font-ibm-plex-serif)' }}
+                            >
+                              {sub.description}
+                            </p>
                           </div>
+                          <p
+                            className="text-[11px] text-[#1677C8]/70 whitespace-nowrap mt-1 group-hover/sub:text-[#1677C8] transition-colors"
+                            style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                          >
+                            → {sub.result}
+                          </p>
                         </div>
                       ))}
                     </div>
-                  )}
-                </article>
-              </TiltCard>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
+          <div className="border-t border-[#C0D8F0]" />
         </div>
       </div>
     </section>

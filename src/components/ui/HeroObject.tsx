@@ -4,12 +4,13 @@ import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
 /** 4-pointed star sprite texture (✦) */
-function createStarTexture(): THREE.Texture {
+function createStarTexture(r: number, g: number, b: number): THREE.Texture {
   const s = 64
   const canvas = document.createElement('canvas')
   canvas.width = s; canvas.height = s
   const ctx = canvas.getContext('2d')!
   const cx = s / 2, cy = s / 2
+
   ctx.clearRect(0, 0, s, s)
 
   const outer = cx * 0.88
@@ -26,10 +27,10 @@ function createStarTexture(): THREE.Texture {
   ctx.closePath()
 
   const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, outer)
-  grd.addColorStop(0,    'rgba(10,10,10,1)')
-  grd.addColorStop(0.2,  'rgba(10,10,10,0.95)')
-  grd.addColorStop(0.65, 'rgba(10,10,10,0.4)')
-  grd.addColorStop(1,    'rgba(10,10,10,0.05)')
+  grd.addColorStop(0,    `rgba(${r},${g},${b},1)`)
+  grd.addColorStop(0.2,  `rgba(${r},${g},${b},0.95)`)
+  grd.addColorStop(0.65, `rgba(${r},${g},${b},0.4)`)
+  grd.addColorStop(1,    `rgba(${r},${g},${b},0.05)`)
   ctx.fillStyle = grd
   ctx.fill()
 
@@ -82,43 +83,53 @@ export default function HeroObject() {
     const camera = new THREE.PerspectiveCamera(50, mount.clientWidth / mount.clientHeight, 0.1, 100)
     camera.position.z = 2.8
 
-    const tex = createStarTexture()
     const group = new THREE.Group()
     scene.add(group)
 
-    const matProps = (size: number, opacity: number) => new THREE.PointsMaterial({
-      map: tex, size, transparent: true, opacity,
-      alphaTest: 0.01, sizeAttenuation: true, depthWrite: false,
-    })
+    // Textures — dark warm and deep green (for light background)
+    const texCream = createStarTexture(13, 34, 54)
+    const texGreen = createStarTexture(22, 119, 200)
 
-    // Layer 1 — bright large stars (constellation anchors)
-    const bigPos  = spherePositions(14, 1.0)
+    const matProps = (tex: THREE.Texture, size: number, opacity: number) =>
+      new THREE.PointsMaterial({
+        map: tex, size, transparent: true, opacity,
+        alphaTest: 0.01, sizeAttenuation: true, depthWrite: false,
+      })
+
+    // Layer 1 — bright large stars (cream)
+    const bigPos  = spherePositions(12, 1.0)
     const bigGeo  = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(bigPos, 3))
-    const bigMat  = matProps(0.20, 0.80)
+    const bigMat  = matProps(texCream, 0.18, 0.75)
     group.add(new THREE.Points(bigGeo, bigMat))
 
-    // Layer 2 — medium stars
-    const medPos  = spherePositions(28, 1.0)
+    // Layer 2 — accent green stars (sparse)
+    const accentPos  = spherePositions(7, 1.0)
+    const accentGeo  = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(accentPos, 3))
+    const accentMat  = matProps(texGreen, 0.14, 0.65)
+    group.add(new THREE.Points(accentGeo, accentMat))
+
+    // Layer 3 — medium stars (cream, dimmer)
+    const medPos  = spherePositions(26, 1.0)
     const medGeo  = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(medPos, 3))
-    const medMat  = matProps(0.11, 0.55)
+    const medMat  = matProps(texCream, 0.09, 0.45)
     group.add(new THREE.Points(medGeo, medMat))
 
-    // Layer 3 — small faint stars
+    // Layer 4 — small faint stars
     const smallPos = spherePositions(50, 1.0)
     const smallGeo = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(smallPos, 3))
-    const smallMat = matProps(0.055, 0.30)
+    const smallMat = matProps(texCream, 0.05, 0.22)
     group.add(new THREE.Points(smallGeo, smallMat))
 
-    // Constellation lines — connect bright stars within ~45° arc
-    const lineArr = buildConstellationLines(bigPos, 14, 0.78)
+    // Constellation lines — acid green
+    const lineArr = buildConstellationLines(bigPos, 12, 0.78)
     if (lineArr.length) {
       const lineGeo = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(lineArr, 3))
       group.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({
-        color: 0x0a0a0a, transparent: true, opacity: 0.12, depthWrite: false,
+        color: 0x1677C8, transparent: true, opacity: 0.15, depthWrite: false,
       })))
     }
 
-    // ── Interaction ─────────────────────────────────────────────
+    // Interaction
     let isDragging = false, autoRotate = true
     let prevX = 0, prevY = 0
     const vel = { x: 0, y: 0 }
@@ -150,25 +161,26 @@ export default function HeroObject() {
       renderer.setSize(mount.clientWidth, mount.clientHeight)
     })
 
-    // ── Animation ───────────────────────────────────────────────
+    // Animation
     let rafId: number, t = 0
     const animate = () => {
       rafId = requestAnimationFrame(animate)
       t += 0.012
 
       if (autoRotate) {
-        group.rotation.y += 0.0035
-        group.rotation.x += 0.0009
+        group.rotation.y += 0.003
+        group.rotation.x += 0.0008
       } else if (!isDragging) {
         vel.x *= 0.90; vel.y *= 0.90
         group.rotation.y += vel.x * 0.009
         group.rotation.x += vel.y * 0.009
       }
 
-      // Twinkling — each layer oscillates at different phase
-      bigMat.opacity   = 0.72 + 0.12 * Math.sin(t * 1.1)
-      medMat.opacity   = 0.50 + 0.12 * Math.sin(t * 0.7 + 1.4)
-      smallMat.opacity = 0.26 + 0.10 * Math.sin(t * 1.5 + 2.7)
+      // Twinkling
+      bigMat.opacity    = 0.68 + 0.10 * Math.sin(t * 1.1)
+      accentMat.opacity = 0.55 + 0.18 * Math.sin(t * 0.9 + 0.8)
+      medMat.opacity    = 0.40 + 0.10 * Math.sin(t * 0.7 + 1.4)
+      smallMat.opacity  = 0.18 + 0.08 * Math.sin(t * 1.5 + 2.7)
 
       renderer.render(scene, camera)
     }
@@ -177,7 +189,8 @@ export default function HeroObject() {
     return () => {
       cancelAnimationFrame(rafId)
       clearTimeout(idleTimer)
-      tex.dispose()
+      texCream.dispose()
+      texGreen.dispose()
       renderer.dispose()
       if (mount.contains(renderer.domElement)) mount.removeChild(renderer.domElement)
     }

@@ -2,17 +2,16 @@
   {
     "id": "lguplus-saas",
     "company": "LG U+",
-    "role": "Frontend Developer / Tech Lead",
+    "role": "Frontend Developer",
     "team": "CX SaaS개발팀",
     "period": "2025 ~",
     "startDate": "2025-07",
     "endDate": null,
     "isCurrent": true,
-    "description": "AICC(상담어드바이저, AI헬프데스크), KMS 서비스 개발 및 테크리드 역할 수행.",
+    "description": "AICC(상담어드바이저, AI헬프데스크), KMS 서비스 개발.",
     "highlights": [
       "상담어드바이저, AI헬프데스크, KMS 서비스 프론트엔드 개발",
       "AICC Assist Agent 개발 — LLM 기반 상담 지원 에이전트 설계 및 구현",
-      "테크리드로서 기술 방향 수립, 코드 리뷰 주도, 파트 빌딩",
       "랩 프론트엔드 테크아고라 진행 — 기술 공유 문화 형성"
     ],
     "tech": ["React", "TypeScript", "Next.js", "Vercel AI SDK", "Turborepo", "pnpm"]

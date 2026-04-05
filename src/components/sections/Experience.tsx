@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import experience from '@/data/experience.json'
 import type { Experience as ExperienceType } from '@/types'
 
-const data = experience as ExperienceType[]
+const data = experience as unknown as ExperienceType[]
 
 export default function Experience() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -16,24 +16,50 @@ export default function Experience() {
   const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <section id="experience" className="py-24 border-t border-[#e0ddd8]">
+    <section id="experience" className="py-32 border-t border-[#C0D8F0] relative overflow-hidden">
+      {/* Decorative number */}
+      <div
+        aria-hidden
+        className="absolute -right-8 top-4 text-[22vw] font-extrabold text-[#0D2236]/[0.04] leading-none select-none pointer-events-none"
+        style={{ fontFamily: 'var(--font-syne)' }}
+      >
+        02
+      </div>
+
       <div className="max-w-6xl mx-auto px-6">
-        <p className="font-mono text-xs text-[#888888] mb-3">02 / experience</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-[#0a0a0a] mb-16">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-[#6899BC] text-[10px] tracking-[0.5em] uppercase mb-16"
+          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+        >
+          02 / Experience
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="text-4xl md:text-5xl font-extrabold text-[#0D2236] mb-20 tracking-tight"
+          style={{ fontFamily: 'var(--font-syne)' }}
+        >
           경력
-        </h2>
+        </motion.h2>
 
         {/* Timeline */}
         <div ref={containerRef} className="relative">
-          {/* Vertical line — draw on scroll */}
-          <div className="absolute left-0 md:left-[200px] top-0 bottom-0 w-[3px] bg-[#e0ddd8] hidden md:block overflow-hidden">
+          {/* Vertical line */}
+          <div className="absolute left-0 md:left-[200px] top-0 bottom-0 w-px bg-[#C0D8F0] hidden md:block overflow-hidden">
             <motion.div
-              className="absolute top-0 left-0 right-0 bottom-0 bg-[#0a0a0a] origin-top"
+              className="absolute top-0 left-0 right-0 bottom-0 bg-[#1677C8] origin-top"
               style={{ scaleY }}
             />
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-20">
             {data.map((exp, idx) => (
               <motion.div
                 key={exp.id}
@@ -45,36 +71,67 @@ export default function Experience() {
               >
                 {/* Period */}
                 <div className="md:text-right mb-4 md:mb-0 md:pr-12">
-                  <p className="font-mono text-xs text-[#888888] leading-relaxed">
+                  <p
+                    className="text-[11px] text-[#6899BC] leading-relaxed"
+                    style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                  >
                     {exp.period}
                   </p>
                   {exp.isCurrent && (
-                    <span className="inline-block mt-2 text-xs px-2 py-0.5 border border-[#0a0a0a]/20 text-[#0a0a0a] rounded font-mono">
-                      현재
+                    <span
+                      className="inline-block mt-2 text-[10px] px-2 py-0.5 bg-[#1677C8]/10 border border-[#1677C8]/30 text-[#1677C8] tracking-widest uppercase"
+                      style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                    >
+                      current
                     </span>
                   )}
                 </div>
 
                 {/* Content */}
                 <div className="md:pl-12 relative">
-                  {/* Dot — centered on 3px line (line center=201.5px, col2 left=248px → offset=52.5px) */}
-                  <div className="absolute -left-[52.5px] top-[5px] w-3 h-3 rounded-full bg-[#0a0a0a] hidden md:block ring-4 ring-white" />
+                  {/* Dot on line */}
+                  <div
+                    className={`absolute -left-[52px] top-[6px] w-2 h-2 hidden md:block ring-4 ring-[#F0F6FF] ${
+                      exp.isCurrent ? 'bg-[#1677C8]' : 'bg-[#A4C4E4]'
+                    }`}
+                  />
 
-                  <h3 className="text-lg font-semibold text-[#0a0a0a] mb-1">
-                    {exp.role}
-                  </h3>
-                  <p className="text-sm text-[#888888] mb-4">
-                    {exp.company} · {exp.location}
-                  </p>
-                  <p className="text-[#1a1a1a] text-sm mb-6 leading-relaxed">
+                  <div className="mb-5">
+                    <h3
+                      className="text-xl md:text-2xl font-bold text-[#0D2236] mb-1 tracking-tight"
+                      style={{ fontFamily: 'var(--font-syne)' }}
+                    >
+                      {exp.role}
+                    </h3>
+                    <p
+                      className="text-[11px] text-[#6899BC]"
+                      style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                    >
+                      {exp.company} · {exp.location}
+                    </p>
+                  </div>
+
+                  <p
+                    className="text-sm text-[#1A3A52]/60 mb-6 leading-relaxed"
+                    style={{ fontFamily: 'var(--font-ibm-plex-serif)' }}
+                  >
                     {exp.description}
                   </p>
 
                   {/* Highlights */}
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2.5 mb-6">
                     {exp.highlights.map((h, i) => (
-                      <li key={i} className="flex gap-3 text-sm text-[#888888]">
-                        <span className="text-[#0a0a0a] mt-0.5 shrink-0">—</span>
+                      <li
+                        key={i}
+                        className="flex gap-3 text-sm text-[#1A3A52]/55"
+                        style={{ fontFamily: 'var(--font-ibm-plex-serif)' }}
+                      >
+                        <span
+                          className="text-[#1677C8] mt-0.5 shrink-0"
+                          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                        >
+                          —
+                        </span>
                         <span>{h}</span>
                       </li>
                     ))}
@@ -85,7 +142,8 @@ export default function Experience() {
                     {exp.tech.map((t) => (
                       <li
                         key={t}
-                        className="text-xs px-2 py-1 bg-[#f7f6f3] text-[#888888] rounded font-mono"
+                        className="text-[10px] px-2.5 py-1 border border-[#C0D8F0] text-[#6899BC] hover:border-[#6899BC] hover:text-[#1A3A52]/60 transition-colors"
+                        style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                       >
                         {t}
                       </li>
@@ -96,7 +154,6 @@ export default function Experience() {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   )

@@ -8,79 +8,110 @@ import type { SkillCategory, SkillLevel } from '@/types'
 const data = skills as SkillCategory[]
 
 const ICONS: Record<string, React.ReactNode> = {
-  Monitor: <Monitor size={16} />,
-  Brain:   <Brain size={16} />,
-  Layers:  <Layers size={16} />,
-  Wrench:  <Wrench size={16} />,
-}
-
-const LEVEL_LABEL: Record<SkillLevel, string> = {
-  expert:     'expert',
-  proficient: 'proficient',
-  learning:   'learning',
-}
-
-const LEVEL_DOT: Record<SkillLevel, string> = {
-  expert:     'bg-[#0a0a0a]',
-  proficient: 'bg-[#888888]',
-  learning:   'bg-[#e0ddd8]',
-}
-
-const LEVEL_TEXT: Record<SkillLevel, string> = {
-  expert:     'text-[#0a0a0a]',
-  proficient: 'text-[#1a1a1a]',
-  learning:   'text-[#888888]',
+  Monitor: <Monitor size={13} />,
+  Brain:   <Brain size={13} />,
+  Layers:  <Layers size={13} />,
+  Wrench:  <Wrench size={13} />,
 }
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 border-t border-[#e0ddd8]">
-      <div className="max-w-6xl mx-auto px-6">
-        <p className="font-mono text-xs text-[#888888] mb-3">03 / skills</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-[#0a0a0a] mb-16">
-          기술 스택
-        </h2>
+    <section id="skills" className="py-32 border-t border-[#C0D8F0] relative overflow-hidden">
+      {/* Decorative number */}
+      <div
+        aria-hidden
+        className="absolute -right-8 top-4 text-[22vw] font-extrabold text-[#0D2236]/[0.04] leading-none select-none pointer-events-none"
+        style={{ fontFamily: 'var(--font-syne)' }}
+      >
+        03
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-[#6899BC] text-[10px] tracking-[0.5em] uppercase mb-16"
+          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+        >
+          03 / Skills
+        </motion.p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.08 }}
+          className="text-4xl md:text-5xl font-extrabold text-[#0D2236] mb-20 tracking-tight"
+          style={{ fontFamily: 'var(--font-syne)' }}
+        >
+          기술 스택
+        </motion.h2>
+
+        <div className="space-y-0">
           {data.map((cat, idx) => (
             <motion.div
               key={cat.category}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.45, ease: 'easeOut', delay: idx * 0.08 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="border border-[#e0ddd8] rounded-lg p-6 bg-[#f7f6f3] cursor-default"
+              className="grid md:grid-cols-[260px_1fr] gap-8 border-t border-[#C0D8F0] py-8 items-start"
             >
-              {/* Category header */}
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-[#888888]">
+              {/* Category label */}
+              <div className="flex items-start gap-3 pt-1">
+                <span className="text-[#1677C8] mt-0.5 shrink-0">
                   {ICONS[cat.icon] ?? null}
                 </span>
-                <h3 className="text-sm font-semibold text-[#0a0a0a]">
-                  {cat.category}
-                </h3>
+                <div>
+                  <h3
+                    className="text-sm font-bold text-[#0D2236] mb-1 tracking-wide"
+                    style={{ fontFamily: 'var(--font-syne)' }}
+                  >
+                    {cat.category}
+                  </h3>
+                  <p
+                    className="text-[10px] text-[#6899BC] leading-relaxed"
+                    style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                  >
+                    {cat.description}
+                  </p>
+                </div>
               </div>
-              <p className="text-xs text-[#888888] mb-6">{cat.description}</p>
 
-              {/* Skills list */}
-              <ul className="space-y-3">
-                {cat.skills.map((skill) => (
-                  <li key={skill.name} className="group flex items-center justify-between">
-                    <span className={`text-sm ${LEVEL_TEXT[skill.level]}`}>
-                      {skill.name}
-                    </span>
-                    <span className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <span className={`w-1.5 h-1.5 rounded-full ${LEVEL_DOT[skill.level]}`} />
-                      <span className="text-xs font-mono text-[#888888]">
-                        {LEVEL_LABEL[skill.level]}
+              {/* Skills inline */}
+              <ul className="flex flex-wrap gap-2 items-center">
+                {cat.skills.map((skill) => {
+                  const isExpert = (skill.level as SkillLevel) === 'expert'
+                  const isLearning = (skill.level as SkillLevel) === 'learning'
+                  return (
+                    <li
+                      key={skill.name}
+                      className={`group flex items-center gap-1.5 px-3 py-2 border transition-all duration-200 ${
+                        isExpert
+                          ? 'border-[#1677C8]/25 text-[#1A3A52] hover:border-[#1677C8]/60 hover:bg-[#1677C8]/5'
+                          : isLearning
+                          ? 'border-[#C0D8F0] text-[#A4C4E4] hover:border-[#A4C4E4] hover:text-[#6899BC]'
+                          : 'border-[#C0D8F0] text-[#1A3A52]/60 hover:border-[#A4C4E4]'
+                      }`}
+                    >
+                      {isExpert && (
+                        <span className="w-1 h-1 rounded-full bg-[#1677C8] shrink-0" />
+                      )}
+                      <span
+                        className="text-[11px]"
+                        style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                      >
+                        {skill.name}
                       </span>
-                    </span>
-                  </li>
-                ))}
+                    </li>
+                  )
+                })}
               </ul>
             </motion.div>
           ))}
+          <div className="border-t border-[#C0D8F0]" />
         </div>
       </div>
     </section>

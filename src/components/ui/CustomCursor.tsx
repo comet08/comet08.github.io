@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 
-const TRAIL_MAX = 28
-const FADE_RATE = 0.04
+const TRAIL_MAX = 32
+const FADE_RATE = 0.038
 
 interface Point { x: number; y: number; life: number }
 
@@ -31,7 +31,6 @@ export default function CustomCursor() {
     const onMove = (e: MouseEvent) => {
       mouse.x = e.clientX
       mouse.y = e.clientY
-      // Only push if moved enough
       const last = trail[trail.length - 1]
       if (!last || Math.hypot(e.clientX - last.x, e.clientY - last.y) > 3) {
         trail.push({ x: e.clientX, y: e.clientY, life: 1 })
@@ -51,33 +50,33 @@ export default function CustomCursor() {
         if (trail[i].life <= 0) trail.splice(i, 1)
       }
 
-      // Draw tail — tapered circles oldest→newest
+      // Draw tail — deep green comet trail
       for (let i = 0; i < trail.length; i++) {
         const t = trail[i]
-        const progress = i / (trail.length - 1 || 1) // 0=oldest 1=newest
-        const radius  = 0.8 + progress * 3.5
-        const opacity = t.life * progress * 0.55
+        const progress = i / (trail.length - 1 || 1)
+        const radius  = 0.6 + progress * 3.2
+        const opacity = t.life * progress * 0.4
 
         ctx.beginPath()
         ctx.arc(t.x, t.y, radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(10,10,10,${opacity})`
+        ctx.fillStyle = `rgba(22,119,200,${opacity})`
         ctx.fill()
       }
 
-      // Head — comet nucleus with glow
-      const grd = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 7)
-      grd.addColorStop(0,   'rgba(10,10,10,0.9)')
-      grd.addColorStop(0.4, 'rgba(10,10,10,0.35)')
-      grd.addColorStop(1,   'rgba(10,10,10,0)')
+      // Glow halo
+      const grd = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 14)
+      grd.addColorStop(0,   'rgba(22,119,200,0.14)')
+      grd.addColorStop(0.5, 'rgba(22,119,200,0.05)')
+      grd.addColorStop(1,   'rgba(22,119,200,0)')
       ctx.beginPath()
-      ctx.arc(mouse.x, mouse.y, 7, 0, Math.PI * 2)
+      ctx.arc(mouse.x, mouse.y, 14, 0, Math.PI * 2)
       ctx.fillStyle = grd
       ctx.fill()
 
       // Nucleus dot
       ctx.beginPath()
-      ctx.arc(mouse.x, mouse.y, 2.5, 0, Math.PI * 2)
-      ctx.fillStyle = 'rgba(10,10,10,1)'
+      ctx.arc(mouse.x, mouse.y, 2, 0, Math.PI * 2)
+      ctx.fillStyle = 'rgba(22,119,200,0.9)'
       ctx.fill()
     }
     animate()
