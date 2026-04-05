@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Link from 'next/link'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/' },
@@ -39,25 +40,25 @@ export default function Navigation() {
 
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a
+        <Link
           href="/about"
           className="text-sm text-[#1677C8] hover:opacity-70 transition-opacity tracking-[0.3em] uppercase"
           style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
         >
           sp.
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className="text-[10px] text-[#6899BC] hover:text-[#0D2236] transition-colors tracking-[0.25em] uppercase"
                 style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -82,14 +83,14 @@ export default function Navigation() {
           <ul className="flex flex-col gap-6">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="text-sm text-[#6899BC] hover:text-[#1677C8] transition-colors tracking-[0.25em] uppercase"
                   style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
