@@ -18,7 +18,7 @@
     "skills": [
       { "name": "Vercel AI SDK", "level": "expert" },
       { "name": "LangChain / LangGraph", "level": "proficient" },
-      { "name": "Prompt Engineering", "level": "proficient" },
+      { "name": "Context Engineering", "level": "proficient" },
       { "name": "SSE Streaming", "level": "expert" },
       { "name": "RAG", "level": "learning" }
     ]

@@ -1,26 +1,10 @@
 [
   {
-    "slug": "llm-interface-patterns",
-    "title": "LLM 인터페이스 설계 패턴",
+    "slug": "test",
+    "title": "테스트",
     "date": "2026-04-05",
-    "category": "AI",
-    "excerpt": "AI 에이전트와 사람이 자연스럽게 협업하는 UI를 만들기 위해 고민했던 패턴들을 정리합니다.",
-    "content": "<p>AI 에이전트 기반 서비스를 개발하면서 가장 많이 고민한 것은 <em>언제 사람이 개입해야 하는가</em>였습니다.</p><h2>Interrupt Pattern</h2><p>에이전트가 작업을 수행하는 도중 사람의 확인이 필요한 순간을 명확하게 드러내는 패턴입니다. 단순히 로딩 스피너를 보여주는 것이 아니라, 현재 에이전트가 어떤 판단을 하려는지, 왜 멈췄는지를 설명합니다.</p><h2>Progressive Disclosure</h2><p>에이전트의 추론 과정을 단계적으로 드러냅니다. 최종 결과만 보여주면 신뢰를 얻기 어렵습니다. 생각의 흔적을 UI로 표현하는 것이 핵심입니다.</p><h2>정리</h2><p>좋은 AI 인터페이스는 에이전트를 숨기지 않습니다. 에이전트가 무엇을 하고 있는지, 왜 그런 결정을 내렸는지를 사용자가 이해할 수 있어야 합니다.</p>"
-  },
-  {
-    "slug": "css-grid-layout",
-    "title": "CSS Grid로 복잡한 레이아웃 다루기",
-    "date": "2026-03-20",
-    "category": "Frontend",
-    "excerpt": "실무에서 마주친 복잡한 그리드 레이아웃 문제들과 해결 방법을 공유합니다.",
-    "content": "<p>CSS Grid는 강력하지만, 복잡한 레이아웃을 다룰 때 예상치 못한 동작을 마주치곤 합니다.</p><h2>subgrid</h2><p>중첩된 그리드 요소들이 부모 그리드와 정렬을 맞춰야 할 때 <code>subgrid</code>가 유용합니다. 이제 모든 주요 브라우저에서 지원됩니다.</p><pre><code>.child {\n  display: grid;\n  grid-column: span 2;\n  grid-template-columns: subgrid;\n}</code></pre><h2>auto-fill vs auto-fit</h2><p><code>auto-fill</code>은 빈 트랙을 유지하고, <code>auto-fit</code>은 빈 트랙을 축소합니다. 반응형 카드 레이아웃에서는 대부분 <code>auto-fit</code>이 원하는 동작입니다.</p>"
-  },
-  {
-    "slug": "team-culture-retrospective",
-    "title": "팀 문화에 대한 생각",
-    "date": "2026-03-01",
-    "category": "Culture",
-    "excerpt": "좋은 팀이란 무엇인지, 5년간의 경험에서 배운 것들을 정리합니다.",
-    "content": "<p>좋은 팀은 개인의 합보다 커야 한다고 믿습니다. 하지만 실제로 그런 팀을 만드는 것은 생각보다 어렵습니다.</p><h2>심리적 안전감</h2><p>가장 중요한 것은 <em>틀려도 괜찮다</em>는 분위기입니다. 코드 리뷰에서 질문을 두려워하지 않고, 모르는 것을 솔직하게 말할 수 있는 환경이 필요합니다.</p><h2>지식 공유</h2><p>배운 것을 나누면 팀 전체가 성장합니다. 내가 알고 있는 것을 나누는 것이 내 가치를 떨어뜨린다고 생각하지 않습니다. 오히려 반대입니다.</p><h2>피드백</h2><p>피드백은 빠를수록 좋습니다. 분기 회고보다 주간 회고가, 주간 회고보다 즉각적인 대화가 더 유용합니다.</p>"
+    "category": "General",
+    "excerpt": "테스트 글입니다.",
+    "content": "<p>테스트 글입니다.</p>"
   }
 ]

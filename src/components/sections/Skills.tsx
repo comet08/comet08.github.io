@@ -46,7 +46,7 @@ export default function Skills() {
           className="text-4xl md:text-5xl font-extrabold text-[#0D2236] mb-20 tracking-tight"
           style={{ fontFamily: 'var(--font-syne)' }}
         >
-          기술 스택
+          경험
         </motion.h2>
 
         <div className="space-y-0">
@@ -96,10 +96,7 @@ export default function Skills() {
                           : 'border-[#C0D8F0] text-[#1A3A52]/60 hover:border-[#A4C4E4]'
                       }`}
                     >
-                      {isExpert && (
-                        <span className="w-1 h-1 rounded-full bg-[#1677C8] shrink-0" />
-                      )}
-                      <span
+<span
                         className="text-[11px]"
                         style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                       >
