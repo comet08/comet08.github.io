@@ -67,5 +67,20 @@
       "크로스플랫폼 환경에서의 웹뷰 최적화"
     ],
     "tech": ["React", "TypeScript", "WebView"]
+  },
+  {
+    "id": "lguplus-ucube",
+    "company": "LG U+",
+    "role": "Backend Developer",
+    "team": "유큐브개발팀",
+    "period": "2022 ~ 2023",
+    "startDate": "2022-01",
+    "endDate": "2023-02",
+    "isCurrent": false,
+    "description": "차세대 유큐브 시스템 개발.",
+    "highlights": [
+      "차세대 유큐브 백엔드 개발"
+    ],
+    "tech": ["Spring", "JPA", "MySQL"]
   }
 ]
