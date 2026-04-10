@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Syne, IBM_Plex_Serif, IBM_Plex_Mono, Black_Han_Sans } from 'next/font/google'
+import Script from 'next/script'
 import CustomCursor from '@/components/ui/CustomCursor'
 import './globals.css'
 
@@ -46,9 +47,36 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8794204253291841"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PS926PLR');`,
+          }}
+        />
+      </head>
       <body
         className={`${syne.variable} ${ibmPlexSerif.variable} ${ibmPlexMono.variable} ${blackHanSans.variable} antialiased`}
       >
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PS926PLR"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <CustomCursor />
         {children}
       </body>
