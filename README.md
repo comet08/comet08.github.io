@@ -1,20 +1,28 @@
-# 박성혜 포트폴리오
+# 박성혜 · Seonghye Park
 
-Frontend + AI Developer 박성혜의 개인 포트폴리오 & 블로그입니다.
+**Frontend + AI Developer**
+LG U+ · Seoul, South Korea
 
-## Stack
+> 프론트엔드와 AI 응용 개발에 관심이 있습니다.
 
-- **Framework**: Next.js (App Router, Static Export)
-- **Styling**: Tailwind CSS v4
-- **Animation**: Framer Motion
-- **3D**: Three.js
-- **Deploy**: GitHub Pages
+🔗 **[comet08.github.io](https://comet08.github.io)**
+
+---
+
+## Tech Stack
+
+| Category | Tools |
+|---|---|
+| Frontend | React, Next.js, TypeScript, Tailwind CSS |
+| AI Agent | Vercel AI SDK, LangChain, SSE Streaming |
+| Architecture | Turborepo, Zustand, React Query |
+| Tooling | Vite, bun, MSW, Docker, GitHub Actions |
 
 ## Pages
 
-- `/` — 메인 소개 (터미널 인트로 + Three.js constellation)
-- `/about` — 경력, 기술, 프로젝트
-- `/blog` — IDE 스타일 블로그
+- **`/`** — 메인 소개 (터미널 인트로 + Three.js constellation)
+- **`/about`** — 경력 · 경험 · 프로젝트
+- **`/blog`** — IDE 스타일 블로그
 
 ## Dev
 
@@ -23,6 +31,4 @@ npm install
 npm run dev
 ```
 
-## Deploy
-
-`main` 브랜치에 푸시하면 GitHub Actions가 자동으로 GitHub Pages에 배포합니다.
+`main` 브랜치 푸시 시 GitHub Actions가 자동 배포합니다.
