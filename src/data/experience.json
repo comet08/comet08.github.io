@@ -8,12 +8,13 @@
     "startDate": "2026-01",
     "endDate": null,
     "isCurrent": true,
-    "description": "상담어드바이저 / 상담 Assist Agent 개발.",
+    "description": "AI 상담 어시스턴트 플랫폼 — 프론트엔드 + 백엔드 개발.",
     "highlights": [
-      "상담어드바이저 서비스 개발",
-      "상담 Assist Agent 설계 및 구현"
+      "LLM 에이전트 서버 — 두 백엔드 간 해시 버킷팅으로 배포 없이 트래픽 점진 전환(카나리)",
+      "feature flag 기반 신규 에이전트 롤아웃 — 기존 흐름 무수정, 미등록 시 자동 fallback",
+      "공통 코어 DI 컨테이너 다형성 설계 — 클래스·팩토리·컨테이너 모두 수용하는 확장점"
     ],
-    "tech": ["React", "TypeScript", "Next.js", "Vercel AI SDK"]
+    "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Python", "LangGraph"]
   },
   {
     "id": "lguplus-saas",
@@ -24,13 +25,14 @@
     "startDate": "2025-07",
     "endDate": "2025-12",
     "isCurrent": false,
-    "description": "AICC(상담어드바이저, AI헬프데스크), KMS 서비스 개발.",
+    "description": "상담어드바이저 — AI 상담 지원 멀티제품 웹 클라이언트. 여러 제품이 한 백엔드를 공유하는 모노레포.",
     "highlights": [
-      "상담어드바이저, AI헬프데스크, KMS 서비스 프론트엔드 개발",
-      "AICC Assist Agent 개발 — LLM 기반 상담 지원 에이전트 설계 및 구현",
-      "랩 프론트엔드 테크아고라 진행 — 기술 공유 문화 형성"
+      "Vercel AI SDK 커스텀 구현 — 백엔드 전용 스트림 프로토콜 파싱, 제네릭 메시지 타입 설계. 사내 에이전트 SDK(a2kit) 설계 기여",
+      "Mock DevTool 2세대 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
+      "FSD 아키텍처 점진 마이그레이션 — 운영 중 서비스를 페이지 단위 무중단 구조 전환",
+      "OpenAPI 코드젠 파이프라인 — 스펙 변경 1회로 전 앱 타입 자동 전파, 앱·백엔드 모델 분리 설계"
     ],
-    "tech": ["React", "TypeScript", "Next.js", "Vercel AI SDK", "Turborepo", "pnpm"]
+    "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "FSD", "MSW", "OpenAPI", "STOMP", "WebSocket"]
   },
   {
     "id": "lguplus-cx",
@@ -41,14 +43,10 @@
     "startDate": "2024-05",
     "endDate": "2025-06",
     "isCurrent": false,
-    "description": "AICC 서비스(상담어드바이저, AI헬프데스크) 앱/웹뷰 개발.",
+    "description": "AI 상담 어시스턴트 초기 버전 + 개발 인프라 구축.",
     "highlights": [
-      "turbo+pnpm 모노레포 구조 설계 — 9개 서비스까지 확장 가능한 베이스 마련",
-      "bun 기반 STOMP mock 서버 및 UI Devtool 개발, 백엔드 없이 실시간 기능 검증",
-      "openapi-generator 도입으로 API 타입 자동화, 휴먼 에러 제거",
-      "MSW GUI Controller 패키지 개발 — mock 응답을 GUI에서 관리·프리셋 재사용",
-      "Vercel ai-sdk 내부 분석 후 커스텀 SSE 스트리밍 구현, 상담 Assist 기능 개발",
-      "구현한 SSE 처리 로직을 패키지화해 사내 에이전트 SDK(a2kit) 설계에 기여"
+      "Mock DevTool 1세대 구축 — 역할 전환·mock 데이터 제어 자체 구현, 팀 전체 백엔드 독립 개발 환경 마련",
+      "Vercel AI SDK 분석 후 커스텀 SSE 스트리밍 구현 — 상담 Assist 기능 개발 및 공통 패키지화"
     ],
     "tech": ["React", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "bun", "MSW", "STOMP", "WebSocket", "SSE"]
   },
@@ -61,12 +59,14 @@
     "startDate": "2023-03",
     "endDate": "2024-02",
     "isCurrent": false,
-    "description": "너겟 크로스플랫폼 앱/웹뷰 개발.",
+    "description": "Nerget — 통신 상품 D2C 가입·개통·관리 서비스. RN 앱·Next.js 웹·웹뷰 모노레포.",
     "highlights": [
-      "너겟 서비스 앱/웹뷰 프론트엔드 개발",
-      "크로스플랫폼 환경에서의 웹뷰 최적화"
+      "앱 번들 측정 후 정리 (17.1MB → 9.55MB) — dev 의존성 분리, lodash 개별 import 전환 + ESLint 재유입 차단. 과정 사내 위키 문서화",
+      "웹뷰 쿠키 인증 디버깅 — iOS/Android 네이티브 구현 직접 분석 후 도메인 분기 핫픽스",
+      "모노레포 공유 패키지 설계 — 복붙 코드를 utils/styles/hooks 패키지로 추출, 순환 의존 제거",
+      "결제 공통 레이아웃 — 트랜잭션 래퍼로 중복 결제를 공통 레이어에서 구조적으로 차단"
     ],
-    "tech": ["React", "TypeScript", "WebView"]
+    "tech": ["React Native", "Next.js", "TypeScript", "Turborepo", "Yarn Workspaces", "React Query", "Zustand", "CodePush"]
   },
   {
     "id": "lguplus-ucube",
@@ -77,7 +77,7 @@
     "startDate": "2022-01",
     "endDate": "2023-02",
     "isCurrent": false,
-    "description": "차세대 유큐브 시스템 개발.",
+    "description": "차세대 유큐브 시스템 백엔드 개발.",
     "highlights": [
       "차세대 유큐브 백엔드 개발"
     ],

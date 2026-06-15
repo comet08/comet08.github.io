@@ -8,7 +8,7 @@ import Contact from '@/components/sections/Contact'
 
 export const metadata = {
   title: '박성혜 — Frontend + AI Developer',
-  description: 'LG U+ 프론트엔드 개발자. AI 에이전트 인터페이스를 만듭니다.',
+  description: '프론트엔드 개발자. AI 에이전트 인터페이스를 만듭니다.',
 }
 
 export default function AboutPage() {

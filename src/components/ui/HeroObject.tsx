@@ -86,7 +86,7 @@ export default function HeroObject() {
     const group = new THREE.Group()
     scene.add(group)
 
-    // Textures — dark warm and deep green (for light background)
+    // Textures — dark stars + blue accent (for light background)
     const texCream = createStarTexture(13, 34, 54)
     const texGreen = createStarTexture(22, 119, 200)
 

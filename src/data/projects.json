@@ -1,30 +1,102 @@
 [
   {
     "slug": "consulting-advisor",
-    "title": "상담어드바이저",
-    "description": "LG U+ AICC 플랫폼의 핵심 프론트엔드 서비스. 모노레포 아키텍처 설계부터 실시간 개발 인프라, LLM 기반 상담 Assist 기능까지 전반을 설계하고 개발했습니다.",
-    "tech": ["React", "TypeScript", "Turborepo", "pnpm", "Vercel AI SDK", "SSE", "WebSocket", "MSW", "bun"],
+    "title": "상담어드바이저 (LG U+) — 멀티제품 웹 클라이언트",
+    "description": "여러 제품이 한 백엔드를 공유하는 모노레포 구조. 화면보다 제품들이 공유하는 프론트 플랫폼을 만들고 그 위에서 실시간 스트리밍 도메인을 다루는 데 집중했다.",
+    "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Python", "LangGraph", "Turborepo", "pnpm", "FSD", "MSW", "STOMP", "OpenAPI"],
     "github": "",
     "demo": "",
     "isPrivate": true,
     "featured": true,
-    "period": "2024.04 ~",
-    "tags": ["AICC", "LLM", "Monorepo"],
+    "period": "2024.05 ~",
+    "press": [
+      {
+        "source": "한국일보",
+        "title": "상담 현장 방문으로 실무 기반 UI 기능 개발",
+        "url": "https://www.hankookilbo.com/news/article/A2025070115450001276",
+        "date": "2025.07"
+      }
+    ],
+    "tags": ["AI", "스트리밍", "모노레포", "FSD"],
     "subProjects": [
       {
-        "title": "모노레포 아키텍처 구성",
-        "description": "turbo+pnpm 모노레포와 FSD 아키텍처를 기반으로 9개 서비스까지 확장 가능한 레포 구조 설계. 공통 패키지, Docker 빌드 체커, turbo cache 적용.",
-        "result": "9개 서비스까지 확장, 온보딩 및 빌드 비용 절감"
+        "title": "AI 스트리밍 SDK 자체 구현",
+        "description": "Vercel AI SDK로 처리 불가한 백엔드 커스텀 스트림 프로토콜을 직접 파싱. 메시지 타입을 제네릭으로 설계해 제품마다 다른 스키마를 단일 SDK로 수용.",
+        "result": "사내 에이전트 SDK(a2kit) 설계 기여"
       },
       {
-        "title": "WebSocket / REST API Mock 인프라",
-        "description": "bun 기반 STOMP mock 서버 및 UI Devtool 개발. openapi-generator로 타입 자동화, MSW GUI Controller 패키지 개발로 mock 응답을 GUI에서 관리·프리셋 재사용.",
-        "result": "백엔드 없이 실시간·REST API 독립 개발 가능, 타입 휴먼 에러 제거"
+        "title": "Mock DevTool 직접 구축 (2세대)",
+        "description": "1세대 자체 DevTool 구축 후 MSW 기반 2세대로 재설계. 핸들러를 LocalStorage에 저장해 런타임에 mock 응답을 켜고 끄도록 개선.",
+        "result": "팀 전체가 백엔드 없이 개발·QA 가능"
       },
       {
-        "title": "상담 Assist 기능 (SSE 스트리밍)",
-        "description": "Vercel ai-sdk 내부 분석 후 커스텀 SSE 스트리밍·마크다운 렌더링·추천 메시지 구조를 설계하고 패키지화. 재렌더링 최소화를 위한 메모이제이션 적용.",
-        "result": "여러 서비스 재사용 가능한 공통 기반 마련, 사내 에이전트 SDK(a2kit) 설계 기여"
+        "title": "FSD 아키텍처 점진 마이그레이션",
+        "description": "운영 중인 서비스를 페이지 단위로 점진 전환. store 직접 참조를 훅으로 대체, 도메인 로직을 entity로 승격.",
+        "result": "무중단 구조 개선, 위젯·도메인 로직 재사용 가능"
+      },
+      {
+        "title": "OpenAPI 코드젠 + 디자인 토큰 자동화",
+        "description": "앱마다 수기로 정의하던 API 타입을 코드젠 파이프라인으로 대체. 생성 모델과 앱 도메인 모델 사이에 매핑 경계를 두는 2단 구조 설계.",
+        "result": "스펙 변경 1회로 전 앱 자동 전파, 휴먼 에러 제거"
+      },
+      {
+        "title": "스트리밍 렌더 안정화 + 실시간 정합성",
+        "description": "토큰 단위 스트리밍 중 마크다운 렌더 깨짐을 스트리밍 친화 렌더러로 해결. STOMP 구독 생명주기 안정화로 실시간 데이터 누락 방지.",
+        "result": "렌더 깨짐·검색 무한 대기 제거, WebSocket 정합성 확보"
+      },
+      {
+        "title": "배포 없는 카나리 트래픽 전환 (백엔드)",
+        "description": "신규 LLM 에이전트 서버로 전환 시, 두 백엔드 간 해시 버킷팅으로 배포 없이 트래픽을 점진 이동. 비율 조정만으로 롤백·확대 가능.",
+        "result": "서비스 중단 없는 에이전트 교체"
+      },
+      {
+        "title": "feature flag 기반 에이전트 롤아웃 (백엔드)",
+        "description": "기존 흐름 코드 수정 없이 신규 에이전트를 플래그로 활성화. 미등록 상태에선 자동 fallback으로 안전하게 운영.",
+        "result": "기존 흐름 무수정, 점진 롤아웃"
+      },
+      {
+        "title": "공통 코어 DI 컨테이너 설계 (백엔드)",
+        "description": "클래스·팩토리·컨테이너를 모두 수용하는 다형성 DI 구조 설계. 구현 교체 없이 확장점만 추가하는 방식.",
+        "result": "의존성 역전으로 코어 수정 없이 확장 가능"
+      }
+    ]
+  },
+  {
+    "slug": "nugget",
+    "title": "Nerget (LG U+) — 앱·웹 클라이언트",
+    "description": "통신 상품 가입·개통·관리 D2C 서비스. RN 앱·Next.js 웹·웹뷰 모노레포로 개발. 화면보다 번들 최적화·공유 구조 설계·고위험 플로우 안정성에 집중.",
+    "tech": ["React Native", "Next.js", "TypeScript", "Turborepo", "Yarn Workspaces", "React Query", "Zustand", "CodePush"],
+    "github": "",
+    "demo": "",
+    "isPrivate": true,
+    "featured": true,
+    "period": "2023.03 ~ 2024.02",
+    "tags": ["React Native", "모노레포", "번들 최적화"],
+    "subProjects": [
+      {
+        "title": "번들 측정과 정리 (17.1MB → 9.55MB)",
+        "description": "번들을 직접 측정해 운영에 포함되면 안 되는 dev 의존성과 lodash 전체 import를 발견. 원인 파악 후 조건부 require·개별 import로 정리하고 ESLint로 재유입 차단.",
+        "result": "앱 번들 44% 감소. 측정 → 원인 → 수정 → 재발 방지 과정 사내 위키 문서화"
+      },
+      {
+        "title": "웹뷰 쿠키 인증 디버깅",
+        "description": "쿠키가 안 먹히는 이슈를 표면에서 막는 대신 react-native-cookies의 iOS/Android 네이티브 구현을 직접 읽고 원인 파악. 도메인 분기 핫픽스로 해결.",
+        "result": "최소 변경으로 픽스. 라이브러리 내부까지 파고드는 디버깅"
+      },
+      {
+        "title": "모노레포 공유 패키지 설계",
+        "description": "앱·웹·웹뷰가 복붙하던 코드를 utils/styles/hooks 패키지로 추출. 순환 의존 제거, Pages/Screens 분리로 웹·웹뷰 간 화면 재사용.",
+        "result": "한 곳 수정이 전 플랫폼에 반영"
+      },
+      {
+        "title": "결제 공통 레이아웃 + 중복 결제 방지",
+        "description": "여러 결제 플로우를 조합형 템플릿으로 통합. 중복 결제를 개별 화면이 아닌 공통 레이어(트랜잭션 래퍼)에서 구조적으로 차단.",
+        "result": "고위험 플로우를 공통 레이어에서 안전하게"
+      },
+      {
+        "title": "WebView ↔ Native 메시지 브리지",
+        "description": "화면마다 따로 짜던 전환·이벤트를 표준 메시지 프로토콜로 통일. 멀티스텝 결제용 원자적 스택 교체(popAndStack) 추가.",
+        "result": "스택 꼬임 해결, 화면 간 통신 표준화"
       }
     ]
   }

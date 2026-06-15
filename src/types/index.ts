@@ -62,6 +62,13 @@ export interface SubProject {
   result: string
 }
 
+export interface PressItem {
+  source: string
+  title: string
+  url: string
+  date: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -74,4 +81,5 @@ export interface Project {
   period?: string
   tags?: string[]
   subProjects?: SubProject[]
+  press?: PressItem[]
 }
