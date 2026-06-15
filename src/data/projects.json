@@ -76,12 +76,12 @@
       {
         "title": "번들 측정과 정리 (17.1MB → 9.55MB)",
         "description": "번들을 직접 측정해 운영에 포함되면 안 되는 dev 의존성과 lodash 전체 import를 발견. 원인 파악 후 조건부 require·개별 import로 정리하고 ESLint로 재유입 차단.",
-        "result": "앱 번들 44% 감소. 측정 → 원인 → 수정 → 재발 방지 과정 사내 위키 문서화"
+        "result": "앱 번들 44% 감소"
       },
       {
         "title": "웹뷰 쿠키 인증 디버깅",
-        "description": "쿠키가 안 먹히는 이슈를 표면에서 막는 대신 react-native-cookies의 iOS/Android 네이티브 구현을 직접 읽고 원인 파악. 도메인 분기 핫픽스로 해결.",
-        "result": "최소 변경으로 픽스. 라이브러리 내부까지 파고드는 디버깅"
+        "description": "쿠키가 안 먹히는 이슈를 react-native-cookies의 iOS/Android 네이티브 구현까지 직접 읽어 원인 파악. 도메인 분기로 해결.",
+        "result": ""
       },
       {
         "title": "모노레포 공유 패키지 설계",
@@ -91,7 +91,7 @@
       {
         "title": "결제 공통 레이아웃 + 중복 결제 방지",
         "description": "여러 결제 플로우를 조합형 템플릿으로 통합. 중복 결제를 개별 화면이 아닌 공통 레이어(트랜잭션 래퍼)에서 구조적으로 차단.",
-        "result": "고위험 플로우를 공통 레이어에서 안전하게"
+        "result": "고위험 플로우 중복 결제 구조적 차단"
       },
       {
         "title": "WebView ↔ Native 메시지 브리지",
