@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박성혜 이력서</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #111111;
+      --gray-dark: #333333;
+      --gray-mid: #666666;
+      --gray-light: #999999;
+      --gray-line: #e0e0e0;
+      --gray-bg: #f7f7f7;
+      --accent: #111111;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 9pt;
+      color: var(--black);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 14mm 16mm 14mm 16mm;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--black);
+      margin-bottom: 14px;
+    }
+
+    .header-left h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .header-left .title {
+      font-size: 10pt;
+      font-weight: 400;
+      color: var(--gray-mid);
+      margin-top: 4px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 8pt;
+      color: var(--gray-mid);
+      line-height: 1.8;
+    }
+
+    .header-right a {
+      color: var(--gray-mid);
+      text-decoration: none;
+    }
+
+    .header-right a:hover {
+      color: var(--black);
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--gray-line);
+    }
+
+    /* ── Summary ── */
+    .summary {
+      font-size: 9pt;
+      color: var(--gray-dark);
+      line-height: 1.7;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 3px 8px;
+    }
+
+    .skill-label {
+      font-size: 8pt;
+      font-weight: 600;
+      color: var(--gray-mid);
+      padding-top: 1px;
+    }
+
+    .skill-value {
+      font-size: 8.5pt;
+      color: var(--gray-dark);
+    }
+
+    /* ── Experience ── */
+    .company-block {
+      margin-bottom: 12px;
+    }
+
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .company-name {
+      font-size: 10.5pt;
+      font-weight: 700;
+    }
+
+    .company-period {
+      font-size: 8pt;
+      color: var(--gray-light);
+    }
+
+    .role-block {
+      margin-bottom: 8px;
+      padding-left: 10px;
+      border-left: 2px solid var(--gray-line);
+    }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .role-name {
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .role-team {
+      font-size: 8pt;
+      color: var(--gray-mid);
+      margin-left: 6px;
+    }
+
+    .role-period {
+      font-size: 7.5pt;
+      color: var(--gray-light);
+    }
+
+    .highlights {
+      list-style: none;
+      padding: 0;
+    }
+
+    .highlights li {
+      font-size: 8.5pt;
+      color: var(--gray-dark);
+      padding-left: 10px;
+      position: relative;
+      margin-bottom: 3px;
+      line-height: 1.55;
+    }
+
+    .highlights li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--gray-light);
+    }
+
+    .tech-tags {
+      margin-top: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .tag {
+      font-size: 7pt;
+      background: var(--gray-bg);
+      color: var(--gray-mid);
+      padding: 1px 5px;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+
+    /* ── Bottom columns ── */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* ── Education ── */
+    .edu-item {
+      margin-bottom: 6px;
+    }
+
+    .edu-school {
+      font-size: 9pt;
+      font-weight: 600;
+    }
+
+    .edu-detail {
+      font-size: 8pt;
+      color: var(--gray-mid);
+    }
+
+    /* ── Certifications ── */
+    .cert-list {
+      list-style: none;
+    }
+
+    .cert-list li {
+      font-size: 8pt;
+      color: var(--gray-dark);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .cert-name {
+      font-weight: 500;
+    }
+
+    .cert-date {
+      font-size: 7.5pt;
+      color: var(--gray-light);
+      white-space: nowrap;
+      margin-left: 6px;
+    }
+
+    /* ── Awards ── */
+    .award-list {
+      list-style: none;
+    }
+
+    .award-list li {
+      font-size: 8pt;
+      color: var(--gray-dark);
+      margin-bottom: 4px;
+      padding-left: 10px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .award-list li::before {
+      content: attr(data-year);
+      position: absolute;
+      left: 0;
+      font-size: 7pt;
+      color: var(--gray-light);
+      font-weight: 600;
+      top: 1px;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body {
+        background: #fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        margin: 0;
+        padding: 12mm 15mm;
+        width: 100%;
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit !important;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <h1>박성혜</h1>
+      <div class="title">Frontend &amp; AI Developer · 5년차</div>
+    </div>
+    <div class="header-right">
+      <div>sperocometa@naver.com</div>
+      <div><a href="https://github.com/comet08">github.com/comet08</a></div>
+      <div><a href="https://comet08.github.io">comet08.github.io</a></div>
+      <div><a href="https://www.linkedin.com/in/cometandcomet/">linkedin.com/in/cometandcomet</a></div>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <section class="section">
+    <div class="section-title">Summary</div>
+    <p class="summary">
+      프론트엔드 기반으로 LLM 에이전트·AI 스트리밍까지 영역을 확장해온 5년차 개발자입니다.
+      구조를 먼저 고민하고, 팀 전체의 개발 경험을 개선하는 일에서 보람을 느낍니다.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section class="section">
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <span class="skill-label">Languages</span>
+      <span class="skill-value">TypeScript, Python, Java</span>
+
+      <span class="skill-label">Frontend</span>
+      <span class="skill-value">React, Next.js, React Native</span>
+
+      <span class="skill-label">AI / LLM</span>
+      <span class="skill-value">LangGraph, LangChain, Vercel AI SDK</span>
+
+      <span class="skill-label">Architecture</span>
+      <span class="skill-value">Turborepo, FSD, OpenAPI codegen, DI Container</span>
+
+      <span class="skill-label">Tools</span>
+      <span class="skill-value">MSW, WebSocket / STOMP, Zustand, React Query, pnpm</span>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="company-block">
+      <div class="company-header">
+        <span class="company-name">LG U+</span>
+        <span class="company-period">2022.01 – 현재</span>
+      </div>
+
+      <!-- Role 1 -->
+      <div class="role-block">
+        <div class="role-header">
+          <div>
+            <span class="role-name">Applied AI Developer</span>
+          </div>
+          <span class="role-period">2026.01 – 현재</span>
+        </div>
+        <ul class="highlights">
+          <li>AI 상담 어드바이저 FE·에이전트 서버 개발 — 일 7.5만 건, 상담 시간 월 117만 분(19%) 절감</li>
+          <li>LLM 카나리 배포 구현 — 해시 버킷팅으로 배포 없이 두 백엔드 간 무중단 점진 전환</li>
+          <li>Feature flag 기반 에이전트 롤아웃 — 기존 코드 무수정, 미등록 시 자동 fallback</li>
+        </ul>
+        <div class="tech-tags">
+          <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span>
+          <span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">Vercel AI SDK</span>
+        </div>
+      </div>
+
+      <!-- Role 2 -->
+      <div class="role-block">
+        <div class="role-header">
+          <div>
+            <span class="role-name">Frontend Developer</span>
+          </div>
+          <span class="role-period">2025.07 – 2025.12</span>
+        </div>
+        <ul class="highlights">
+          <li>Vercel AI SDK 커스텀 구현 — 사내 에이전트 SDK(a2kit) 설계 기여</li>
+          <li>OpenAPI 코드젠 파이프라인 구성 — 스펙 변경 1회로 전 앱 타입 자동 전파</li>
+          <li>FE 테크아고라 주도 — 격주 기술 공유 세션 기획·진행</li>
+        </ul>
+        <div class="tech-tags">
+          <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span>
+          <span class="tag">Turborepo</span><span class="tag">FSD</span>
+          <span class="tag">MSW</span><span class="tag">OpenAPI</span><span class="tag">STOMP</span><span class="tag">WebSocket</span>
+        </div>
+      </div>
+
+      <!-- Role 3 -->
+      <div class="role-block">
+        <div class="role-header">
+          <div>
+            <span class="role-name">Frontend Developer</span>
+          </div>
+          <span class="role-period">2024.05 – 2025.06</span>
+        </div>
+        <ul class="highlights">
+          <li>Turborepo 모노레포 설계 및 FSD 아키텍처 도입</li>
+          <li>Mock DevTool 자체 구현 — 역할별 시나리오 제어, 팀 백엔드 독립 개발 환경 구축</li>
+          <li>커스텀 SSE 스트리밍 구현 및 AI Assist 기능 공통 패키지화</li>
+        </ul>
+        <div class="tech-tags">
+          <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Vercel AI SDK</span>
+          <span class="tag">Turborepo</span><span class="tag">bun</span><span class="tag">MSW</span><span class="tag">SSE</span>
+        </div>
+      </div>
+
+      <!-- Role 4 -->
+      <div class="role-block">
+        <div class="role-header">
+          <div>
+            <span class="role-name">Frontend Developer</span>
+          </div>
+          <span class="role-period">2023.03 – 2024.02</span>
+        </div>
+        <ul class="highlights">
+          <li>앱 번들 44% 감소 (17.1MB → 9.55MB) — dev 의존성 분리, lodash 개별 import, ESLint로 재유입 차단</li>
+          <li>웹뷰 쿠키 인증 이슈 — iOS/Android 네이티브 구현 직접 분석 후 핫픽스</li>
+          <li>모노레포 공유 패키지 설계 — utils/styles/hooks 추출, 순환 의존 제거</li>
+        </ul>
+        <div class="tech-tags">
+          <span class="tag">React Native</span><span class="tag">Next.js</span><span class="tag">TypeScript</span>
+          <span class="tag">Turborepo</span><span class="tag">React Query</span><span class="tag">Zustand</span><span class="tag">CodePush</span>
+        </div>
+      </div>
+
+      <!-- Role 5 -->
+      <div class="role-block">
+        <div class="role-header">
+          <div>
+            <span class="role-name">Backend Developer</span>
+          </div>
+          <span class="role-period">2022.01 – 2023.02</span>
+        </div>
+        <ul class="highlights">
+          <li>차세대 유큐브 시스템 백엔드 개발</li>
+        </ul>
+        <div class="tech-tags">
+          <span class="tag">Spring</span><span class="tag">JPA</span><span class="tag">MySQL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom grid: Education / Certifications / Awards -->
+  <div class="bottom-grid">
+
+    <!-- Education -->
+    <section class="section">
+      <div class="section-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-school">전남대학교</div>
+        <div class="edu-detail">소프트웨어공학 전공</div>
+        <div class="edu-detail">2017.03 – 2022.02 졸업</div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="section">
+      <div class="section-title">Certifications</div>
+      <ul class="cert-list">
+        <li><span class="cert-name">정보처리기사</span><span class="cert-date">2020.08</span></li>
+        <li><span class="cert-name">리눅스마스터 1급</span><span class="cert-date">2020.05</span></li>
+        <li><span class="cert-name">AWS Solutions Architect Associate</span><span class="cert-date">2020.06</span></li>
+        <li><span class="cert-name">AWS Developer Associate</span><span class="cert-date">2023.09</span></li>
+        <li><span class="cert-name">CKAD</span><span class="cert-date">2024.08</span></li>
+        <li><span class="cert-name">SQLd</span><span class="cert-date">2022.06</span></li>
+      </ul>
+    </section>
+
+
+  </div>
+
+</div>
+</body>
+</html>

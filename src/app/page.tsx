@@ -287,6 +287,15 @@ export default function Home() {
           >
             LinkedIn
           </a>
+          <a
+            href="/resume.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] text-[#A4C0D8] hover:text-[#1677C8] transition-colors tracking-widest uppercase"
+            style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+          >
+            Resume
+          </a>
         </div>
       </footer>
     </motion.main>
