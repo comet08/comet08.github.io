@@ -226,8 +226,8 @@ const WIN_CFG: Record<
 
 function PhotoContent() {
   return (
-    <div className="w-full h-full flex items-center justify-center bg-[#F4F9FF]">
-      <Image src="/profile.JPG" alt="박성혜" width={320} height={380} className="object-cover w-full h-full" />
+    <div className="relative w-full h-full">
+      <Image src="/profile.JPG" alt="박성혜" fill className="object-cover" unoptimized />
     </div>
   )
 }
@@ -326,7 +326,7 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
 
       {/* Editor body */}
       <div className="border border-t-0 border-[#B8D4EC] bg-white overflow-y-auto relative" style={{ height: size.height }}>
-        <div className="py-2 h-full">
+        <div className={id === 'photo' ? 'h-full' : 'py-2'}>
           <EditorContent id={id} />
         </div>
         {/* Resize handle */}

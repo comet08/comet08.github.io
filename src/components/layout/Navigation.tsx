@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '/projects' },
+  { label: 'Desktop', href: '/desktop' },
 ]
 
 export default function Navigation() {
