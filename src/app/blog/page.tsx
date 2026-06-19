@@ -64,7 +64,7 @@ export default function BlogPage() {
             className="text-[11px] text-[#6899BC]"
             style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
           >
-            blog — sp.dev
+            blog — comet.dev
           </span>
         </div>
         <Link

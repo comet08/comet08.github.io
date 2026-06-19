@@ -131,7 +131,7 @@ export default function Home() {
           className="text-[11px] text-[#1677C8] tracking-[0.4em] uppercase font-bold"
           style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
         >
-          sp.dev
+          comet.dev
         </span>
 
         <nav className="flex items-center gap-8">

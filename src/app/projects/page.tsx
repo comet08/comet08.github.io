@@ -24,7 +24,7 @@ export default function ProjectsPage() {
             style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
           >
             <ArrowLeft size={12} />
-            sp.dev
+            comet.dev
           </Link>
           <p
             className="text-[10px] text-[#1677C8] tracking-[0.5em] uppercase mb-4"

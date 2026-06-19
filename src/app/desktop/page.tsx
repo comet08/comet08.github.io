@@ -422,7 +422,7 @@ export default function DesktopPage() {
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-1.5 text-[11px] text-[#6899BC] hover:text-[#0D2236] transition-colors" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
             <ChevronLeft size={12} />
-            sp.dev
+            comet.dev
           </Link>
           <span className="text-[#C0D8F0] text-xs select-none">|</span>
           <span className="text-[11px] text-[#1677C8] tracking-widest uppercase" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
