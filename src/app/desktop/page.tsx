@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useDragControls, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { FileText, Braces, Briefcase, Layers, Mail, X, ChevronLeft } from 'lucide-react'
+import { FileText, Braces, Briefcase, Layers, Mail, X, ChevronLeft, User } from 'lucide-react'
+import Image from 'next/image'
 import profile from '@/data/profile.json'
 import skillsData from '@/data/skills.json'
 import experienceData from '@/data/experience.json'
@@ -11,7 +12,7 @@ import projectsData from '@/data/projects.json'
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
-type WindowId = 'readme' | 'skills' | 'experience' | 'projects' | 'contact'
+type WindowId = 'readme' | 'skills' | 'experience' | 'projects' | 'contact' | 'photo'
 
 interface WindowInstance {
   id: WindowId
@@ -215,6 +216,7 @@ const WIN_CFG: Record<
   WindowId,
   { filename: string; Icon: React.FC<{ size?: number; className?: string }>; width: number; height: number; initialPos: { x: number; y: number } }
 > = {
+  photo:      { filename: 'profile.jpg',   Icon: User,     width: 320, height: 380, initialPos: { x: 120, y: 60  } },
   readme:     { filename: 'README.md',     Icon: FileText, width: 560, height: 420, initialPos: { x: 180, y: 70  } },
   skills:     { filename: 'skills.json',   Icon: Braces,   width: 580, height: 440, initialPos: { x: 210, y: 95  } },
   experience: { filename: 'experience.md', Icon: Briefcase,width: 660, height: 500, initialPos: { x: 200, y: 80  } },
@@ -222,8 +224,17 @@ const WIN_CFG: Record<
   contact:    { filename: 'contact.json',  Icon: Mail,     width: 460, height: 320, initialPos: { x: 260, y: 105 } },
 }
 
+function PhotoContent() {
+  return (
+    <div className="w-full h-full flex items-center justify-center bg-[#F4F9FF]">
+      <Image src="/profile.JPG" alt="박성혜" width={320} height={380} className="object-cover w-full h-full" />
+    </div>
+  )
+}
+
 function EditorContent({ id }: { id: WindowId }) {
   switch (id) {
+    case 'photo':      return <PhotoContent />
     case 'readme':     return <ReadmeContent />
     case 'skills':     return <SkillsContent />
     case 'experience': return <ExperienceContent />
@@ -238,6 +249,30 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
   const cfg = WIN_CFG[id]
   const dragControls = useDragControls()
   const Icon = cfg.Icon
+  const [size, setSize] = useState({ width: cfg.width, height: cfg.height })
+  const sizeRef = useRef(size)
+  sizeRef.current = size
+
+  const onResizePointerDown = (e: React.PointerEvent) => {
+    e.stopPropagation()
+    e.preventDefault()
+    const startX = e.clientX
+    const startY = e.clientY
+    const startW = sizeRef.current.width
+    const startH = sizeRef.current.height
+    const onMove = (ev: PointerEvent) => {
+      setSize({
+        width: Math.max(280, startW + ev.clientX - startX),
+        height: Math.max(200, startH + ev.clientY - startY),
+      })
+    }
+    const onUp = () => {
+      window.removeEventListener('pointermove', onMove)
+      window.removeEventListener('pointerup', onUp)
+    }
+    window.addEventListener('pointermove', onMove)
+    window.addEventListener('pointerup', onUp)
+  }
 
   return (
     <motion.div
@@ -249,7 +284,7 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
       style={{
         left: cfg.initialPos.x,
         top: cfg.initialPos.y,
-        width: cfg.width,
+        width: size.width,
         zIndex,
         filter: 'drop-shadow(0 8px 24px rgba(22,119,200,0.18)) drop-shadow(0 2px 4px rgba(22,119,200,0.10))',
       }}
@@ -290,9 +325,19 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
       </div>
 
       {/* Editor body */}
-      <div className="border border-t-0 border-[#B8D4EC] bg-white overflow-y-auto" style={{ height: cfg.height }}>
-        <div className="py-2">
+      <div className="border border-t-0 border-[#B8D4EC] bg-white overflow-y-auto relative" style={{ height: size.height }}>
+        <div className="py-2 h-full">
           <EditorContent id={id} />
+        </div>
+        {/* Resize handle */}
+        <div
+          onPointerDown={onResizePointerDown}
+          className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize"
+          style={{ zIndex: 1 }}
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" className="text-[#C0D8F0]">
+            <path d="M14 14L8 14M14 14L14 8M14 14L10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
         </div>
       </div>
     </motion.div>
@@ -326,7 +371,7 @@ function DesktopIcon({ id, isOpen, onClick }: { id: WindowId; isOpen: boolean; o
 // ─── Main page ─────────────────────────────────────────────────────────────────
 
 export default function DesktopPage() {
-  const [windows, setWindows] = useState<WindowInstance[]>([])
+  const [windows, setWindows] = useState<WindowInstance[]>([{ id: 'photo', zIndex: 100 }])
   const topZRef = useRef(100)
 
   const openWindow = (id: WindowId) => {

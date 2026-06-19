@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import profile from '@/data/profile.json'
 import HeroObject from '@/components/ui/HeroObject'
 
@@ -63,7 +63,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.52, duration: 0.6 }}
               className="text-base md:text-lg text-[#1A3A52]/60 max-w-md mb-12 leading-relaxed italic"
-              style={{ fontFamily: 'var(--font-ibm-plex-serif)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-ibm-plex-serif)', fontWeight: 300, wordBreak: 'keep-all' }}
             >
               {profile.bio}
             </motion.p>

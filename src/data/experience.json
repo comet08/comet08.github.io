@@ -8,13 +8,13 @@
     "startDate": "2026-01",
     "endDate": null,
     "isCurrent": true,
-    "description": "AI 상담 어시스턴트 플랫폼 — 프론트엔드 + 백엔드 개발.",
+    "description": "AI 상담 어시스턴트 플랫폼 — 백엔드 개발.",
     "highlights": [
-      "LLM 에이전트 서버 — 두 백엔드 간 해시 버킷팅으로 배포 없이 트래픽 점진 전환(카나리)",
-      "feature flag 기반 신규 에이전트 롤아웃 — 기존 흐름 무수정, 미등록 시 자동 fallback",
-      "공통 코어 DI 컨테이너 다형성 설계 — 클래스·팩토리·컨테이너 모두 수용하는 확장점"
+      "신규 도메인 에이전트 개발",
+      "LLM 에이전트 서버 — 해시 버킷팅으로 배포 없이 트래픽 점진 전환 구조 생성",
+      "공통 코어 DI 컨테이너 다형성 설계(core-package) — multi tenant 클래스·팩토리·컨테이너 모두 수용하는 확장점"
     ],
-    "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Python", "LangGraph"]
+    "tech": ["Python", "LangGraph", "LangChain", "MongoDB", "FastAPI"]
   },
   {
     "id": "lguplus-saas",
@@ -27,11 +27,12 @@
     "isCurrent": false,
     "description": "상담어드바이저 — AI 상담 지원 멀티제품 웹 클라이언트. 여러 제품이 한 백엔드를 공유하는 모노레포.",
     "highlights": [
+      "상담 Assist 기능 개발 — LLM 기반 상담 지식 추천/검색 기능",
+      "커스텀 SSE 스트리밍 구현 — 상담 Assist 기능 개발 및 공통 패키지화",
       "Vercel AI SDK 커스텀 구현 — 백엔드 전용 스트림 프로토콜 파싱, 제네릭 메시지 타입 설계. 사내 에이전트 SDK(a2kit) 설계 기여",
-      "Mock DevTool 2세대 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
-      "FSD 아키텍처 점진 마이그레이션 — 운영 중 서비스를 페이지 단위 무중단 구조 전환",
+      "Mock DevTool 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
       "OpenAPI 코드젠 파이프라인 — 스펙 변경 1회로 전 앱 타입 자동 전파, 앱·백엔드 모델 분리 설계",
-      "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더 깨짐 해결, STOMP 구독 생명주기 안정화로 실시간 데이터 누락 방지"
+      "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더링"
     ],
     "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "FSD", "MSW", "OpenAPI", "STOMP", "WebSocket"]
   },
@@ -46,8 +47,9 @@
     "isCurrent": false,
     "description": "AI 상담 어시스턴트 초기 버전 + 개발 인프라 구축.",
     "highlights": [
-      "Mock DevTool 1세대 구축 — 역할 전환·mock 데이터 제어 자체 구현, 팀 전체 백엔드 독립 개발 환경 마련",
-      "Vercel AI SDK 분석 후 커스텀 SSE 스트리밍 구현 — 상담 Assist 기능 개발 및 공통 패키지화"
+      "상담어드바이저 - Electron 기반 웹앱 개발",
+      "WebSocket(STOMP) 실시간 통신 구현 — 상담 데이터 실시간 수신 플로우 개발",
+      "STOMP Mock 서버 직접 구축 — bun으로 백엔드 없이 WebSocket 구독·메시지 흐름 로컬 재현"
     ],
     "tech": ["React", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "bun", "MSW", "STOMP", "WebSocket", "SSE"]
   },
@@ -62,7 +64,7 @@
     "isCurrent": false,
     "description": "Nerget — 통신 상품 가입·개통·관리 서비스. RN 앱·Next.js 웹·웹뷰 모노레포.",
     "highlights": [
-      "앱 번들 측정 후 정리 (17.1MB → 9.55MB) — dev 의존성 분리, lodash 개별 import 전환 + ESLint 재유입 차단",
+      "번호이동·부스터 가입·분실신고 등 통신 핵심 도메인 기능 개발",
       "모노레포 공유 패키지 설계 — 복붙 코드를 utils/styles/hooks 패키지로 추출, 순환 의존 제거",
       "WebView ↔ Native 메시지 브리지 — 화면마다 따로 짜던 전환·이벤트를 표준 프로토콜로 통일, 멀티스텝 결제용 원자적 스택 교체(popAndStack) 추가"
     ],

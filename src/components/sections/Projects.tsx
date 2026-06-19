@@ -12,6 +12,7 @@ const data = projects as Project[]
 export default function Projects() {
   const featured = data.filter((p) => p.featured)
   const [expanded, setExpanded] = useState<string | null>(featured[0]?.slug ?? null)
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
 
   return (
     <section id="projects" className="py-32 border-t border-[#C0D8F0] relative overflow-hidden">
@@ -144,9 +145,14 @@ export default function Projects() {
                       {project.images && project.images.length > 0 && (
                         <div className="flex gap-3 mb-6 mt-2">
                           {project.images.map((src, ii) => (
-                            <div key={ii} className="relative overflow-hidden border border-[#C0D8F0]" style={{ width: 200, height: 120 }}>
+                            <button
+                              key={ii}
+                              onClick={() => setLightboxSrc(src)}
+                              className="relative overflow-hidden border border-[#C0D8F0] hover:border-[#1677C8] transition-colors cursor-zoom-in shrink-0"
+                              style={{ width: 200, height: 120 }}
+                            >
                               <Image src={src} alt={`${project.title} ${ii + 1}`} fill className="object-cover" unoptimized />
-                            </div>
+                            </button>
                           ))}
                         </div>
                       )}
@@ -186,6 +192,30 @@ export default function Projects() {
           <div className="border-t border-[#C0D8F0]" />
         </div>
       </div>
+
+      {/* Image lightbox */}
+      <AnimatePresence>
+        {lightboxSrc && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxSrc(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm cursor-zoom-out p-6"
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+              className="relative max-w-3xl w-full"
+              style={{ aspectRatio: '16/10' }}
+            >
+              <Image src={lightboxSrc} alt="" fill className="object-contain" unoptimized />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

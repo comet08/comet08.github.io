@@ -1,9 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import profile from '@/data/profile.json'
 
 export default function About() {
+  const [lightbox, setLightbox] = useState(false)
+
   return (
     <section id="about" className="py-32 border-t border-[#C0D8F0] relative overflow-hidden">
       {/* Decorative section number */}
@@ -57,6 +61,36 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.22 }}
             className="space-y-10 pt-1"
           >
+            {/* Profile image */}
+            <button
+              onClick={() => setLightbox(true)}
+              className="w-56 h-56 rounded-full overflow-hidden border-2 border-[#C0D8F0] hover:border-[#1677C8] transition-colors cursor-zoom-in block"
+            >
+              <Image src="/profile.JPG" alt="박성혜" width={224} height={224} className="object-cover w-full h-full" />
+            </button>
+
+            <AnimatePresence>
+              {lightbox && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setLightbox(false)}
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm cursor-zoom-out"
+                >
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.8, opacity: 0 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+                    className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white/20"
+                  >
+                    <Image src="/profile.JPG" alt="박성혜" width={384} height={384} className="object-cover w-full h-full" />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <div>
               <h3
                 className="text-[#1677C8] text-[10px] tracking-[0.4em] uppercase mb-5"
