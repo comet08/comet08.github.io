@@ -253,6 +253,8 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
   const sizeRef = useRef(size)
   sizeRef.current = size
 
+  const aspect = cfg.height / cfg.width
+
   const onResizePointerDown = (e: React.PointerEvent) => {
     e.stopPropagation()
     e.preventDefault()
@@ -261,10 +263,15 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
     const startW = sizeRef.current.width
     const startH = sizeRef.current.height
     const onMove = (ev: PointerEvent) => {
-      setSize({
-        width: Math.max(280, startW + ev.clientX - startX),
-        height: Math.max(200, startH + ev.clientY - startY),
-      })
+      if (id === 'photo') {
+        const newW = Math.max(200, startW + ev.clientX - startX)
+        setSize({ width: newW, height: Math.round(newW * aspect) })
+      } else {
+        setSize({
+          width: Math.max(280, startW + ev.clientX - startX),
+          height: Math.max(200, startH + ev.clientY - startY),
+        })
+      }
     }
     const onUp = () => {
       window.removeEventListener('pointermove', onMove)
