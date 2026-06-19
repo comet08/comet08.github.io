@@ -40,7 +40,7 @@ export default async function ProjectPage({
       <div className="max-w-3xl mx-auto px-6 py-24">
         {/* Back */}
         <Link
-          href="/about#projects"
+          href="/projects"
           className="inline-flex items-center gap-2 text-[10px] text-[#6899BC] hover:text-[#0D2236] transition-colors mb-16 tracking-[0.3em] uppercase"
           style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
         >
