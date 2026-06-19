@@ -17,6 +17,10 @@
         "date": "2025.07"
       }
     ],
+    "images": [
+      "https://www.mirae-biz.com/news/photo/202505/101212_102226_510.jpg",
+      "https://news.nateimg.co.kr/orgImg/ed/2025/05/27/PS25052700336.jpg"
+    ],
     "tags": ["AI", "스트리밍", "모노레포", "FSD"],
     "subProjects": [
       {
@@ -65,6 +69,10 @@
     "slug": "nugget",
     "title": "Nerget (LG U+) — 앱·웹 클라이언트",
     "description": "통신 상품 가입·개통·관리 D2C 서비스. RN 앱·Next.js 웹·웹뷰 모노레포로 개발. 화면보다 번들 최적화·공유 구조 설계·고위험 플로우 안정성에 집중.",
+    "images": [
+      "https://cdn.litt.ly/images/Mcv7t1AtHLRby95qIAj7WnhhRTOYHxFP?s=1200x630&m=inside",
+      "https://mblogthumb-phinf.pstatic.net/MjAyNDA5MDFfOCAg/MDAxNzI1MTkxOTU0MzMz.gplV_QHjbrrS2JPhFahb_nXblgPQo_1zxR46PBv5CPog.ntBYQtBsPJfpG6dWAWiBzntmPfykPSu9JObeihZD3lQg.JPEG/output_3525324202.jpg?type=w800"
+    ],
     "tech": ["React Native", "Next.js", "TypeScript", "Turborepo", "Yarn Workspaces", "React Query", "Zustand", "CodePush"],
     "github": "",
     "demo": "",
@@ -79,19 +87,9 @@
         "result": "앱 번들 44% 감소"
       },
       {
-        "title": "웹뷰 쿠키 인증 디버깅",
-        "description": "쿠키가 안 먹히는 이슈를 react-native-cookies의 iOS/Android 네이티브 구현까지 직접 읽어 원인 파악. 도메인 분기로 해결.",
-        "result": ""
-      },
-      {
         "title": "모노레포 공유 패키지 설계",
         "description": "앱·웹·웹뷰가 복붙하던 코드를 utils/styles/hooks 패키지로 추출. 순환 의존 제거, Pages/Screens 분리로 웹·웹뷰 간 화면 재사용.",
         "result": "한 곳 수정이 전 플랫폼에 반영"
-      },
-      {
-        "title": "결제 공통 레이아웃 + 중복 결제 방지",
-        "description": "여러 결제 플로우를 조합형 템플릿으로 통합. 중복 결제를 개별 화면이 아닌 공통 레이어(트랜잭션 래퍼)에서 구조적으로 차단.",
-        "result": "고위험 플로우 중복 결제 구조적 차단"
       },
       {
         "title": "WebView ↔ Native 메시지 브리지",

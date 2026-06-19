@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Newspaper } from 'lucide-react'
+import Image from 'next/image'
 import projects from '@/data/projects.json'
 import type { Project } from '@/types'
 
@@ -100,14 +101,45 @@ export default function Projects() {
                         </span>
                       )}
                     </div>
+                    {project.press && project.press.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-3">
+                        {project.press.map((p, pi) => (
+                          <a
+                            key={pi}
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 border border-[#1677C8]/30 text-[#1677C8] bg-[#1677C8]/5 hover:bg-[#1677C8]/10 transition-colors"
+                            style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                          >
+                            <Newspaper size={9} />
+                            {p.source} · {p.date}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div
-                  className={`mt-3 text-[#6899BC] transition-all duration-300 shrink-0 ${
-                    expanded === project.slug ? 'rotate-180 text-[#1677C8]' : ''
-                  }`}
-                >
-                  <ChevronDown size={16} />
+                <div className="flex flex-col items-end gap-3 shrink-0">
+                  {project.images?.[0] && (
+                    <div className="w-32 h-20 relative overflow-hidden border border-[#C0D8F0] hidden md:block">
+                      <Image
+                        src={project.images[0]}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  )}
+                  <div
+                    className={`text-[#6899BC] transition-all duration-300 ${
+                      expanded === project.slug ? 'rotate-180 text-[#1677C8]' : ''
+                    }`}
+                  >
+                    <ChevronDown size={16} />
+                  </div>
                 </div>
               </button>
 

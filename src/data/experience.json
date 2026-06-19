@@ -62,9 +62,7 @@
     "description": "Nerget — 통신 상품 D2C 가입·개통·관리 서비스. RN 앱·Next.js 웹·웹뷰 모노레포.",
     "highlights": [
       "앱 번들 측정 후 정리 (17.1MB → 9.55MB) — dev 의존성 분리, lodash 개별 import 전환 + ESLint 재유입 차단",
-      "웹뷰 쿠키 인증 디버깅 — iOS/Android 네이티브 구현 분석으로 원인 파악, 도메인 분기로 해결",
-      "모노레포 공유 패키지 설계 — 복붙 코드를 utils/styles/hooks 패키지로 추출, 순환 의존 제거",
-      "결제 공통 레이아웃 — 트랜잭션 래퍼로 중복 결제를 공통 레이어에서 구조적으로 차단"
+      "모노레포 공유 패키지 설계 — 복붙 코드를 utils/styles/hooks 패키지로 추출, 순환 의존 제거"
     ],
     "tech": ["React Native", "Next.js", "TypeScript", "Turborepo", "Yarn Workspaces", "React Query", "Zustand", "CodePush"]
   },

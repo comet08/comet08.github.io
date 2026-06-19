@@ -82,4 +82,5 @@ export interface Project {
   tags?: string[]
   subProjects?: SubProject[]
   press?: PressItem[]
+  images?: string[]
 }

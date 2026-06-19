@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, ArrowRight, Lock, Newspaper } from 'lucide-react'
 import projects from '@/data/projects.json'
 import type { Project } from '@/types'
@@ -44,6 +45,17 @@ export default function ProjectsPage() {
           {data.map((project, i) => (
             <article key={project.slug} className="group border-b border-[#C0D8F0] py-10">
               <div className="flex items-start justify-between gap-8">
+                {project.images?.[0] && (
+                  <div className="w-36 h-24 relative overflow-hidden border border-[#C0D8F0] shrink-0 hidden md:block mt-1">
+                    <Image
+                      src={project.images[0]}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
+                )}
                 <div className="flex-1 min-w-0">
                   {/* Meta */}
                   <div className="flex items-center gap-3 mb-4">
