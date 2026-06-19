@@ -28,11 +28,11 @@
     "description": "상담어드바이저 — AI 상담 지원 멀티제품 웹 클라이언트. 여러 제품이 한 백엔드를 공유하는 모노레포.",
     "highlights": [
       "상담 Assist 기능 개발 — LLM 기반 상담 지식 추천/검색 기능",
-      "커스텀 SSE 스트리밍 구현 — 상담 Assist 기능 개발 및 공통 패키지화",
+      "커스텀 SSE 스트리밍 구현 — 백엔드 커스텀 스트림 파싱 후 공통 패키지화",
       "Vercel AI SDK 커스텀 구현 — 백엔드 전용 스트림 프로토콜 파싱, 제네릭 메시지 타입 설계. 사내 에이전트 SDK(a2kit) 설계 기여",
       "Mock DevTool 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
       "OpenAPI 코드젠 파이프라인 — 스펙 변경 1회로 전 앱 타입 자동 전파, 앱·백엔드 모델 분리 설계",
-      "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더링"
+      "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더 깨짐 해결, STOMP 구독 생명주기 안정화"
     ],
     "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "FSD", "MSW", "OpenAPI", "STOMP", "WebSocket"]
   },
@@ -47,7 +47,7 @@
     "isCurrent": false,
     "description": "AI 상담 어시스턴트 초기 버전 + 개발 인프라 구축.",
     "highlights": [
-      "상담어드바이저 - Electron 기반 웹앱 개발",
+      "상담어드바이저 — Electron 기반 웹앱 개발",
       "WebSocket(STOMP) 실시간 통신 구현 — 상담 데이터 실시간 수신 플로우 개발",
       "STOMP Mock 서버 직접 구축 — bun으로 백엔드 없이 WebSocket 구독·메시지 흐름 로컬 재현"
     ],

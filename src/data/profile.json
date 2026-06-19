@@ -1,7 +1,7 @@
 {
   "name": "박성혜",
   "nameEn": "Seonghye Park",
-  "title": "Frontend Developer",
+  "title": "Frontend & AI Developer",
   "company": "LG U+",
   "email": "sperocometa@gmail.com",
   "location": "Seoul, South Korea",
@@ -22,5 +22,5 @@
     "github": "https://github.com/comet08",
     "linkedin": "https://linkedin.com/in/cometandcomet"
   },
-  "resume": "/resume.pdf"
+  "resume": "/resume.html"
 }
