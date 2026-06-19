@@ -12,7 +12,7 @@ import projectsData from '@/data/projects.json'
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
-type WindowId = 'readme' | 'skills' | 'experience' | 'projects' | 'contact' | 'photo'
+type WindowId = 'readme' | 'experience' | 'projects' | 'contact' | 'photo'
 
 interface WindowInstance {
   id: WindowId
@@ -218,7 +218,7 @@ const WIN_CFG: Record<
 > = {
   photo:      { filename: 'profile.jpg',   Icon: User,     width: 320, height: 380, initialPos: { x: 120, y: 60  } },
   readme:     { filename: 'README.md',     Icon: FileText, width: 560, height: 420, initialPos: { x: 180, y: 70  } },
-  skills:     { filename: 'skills.json',   Icon: Braces,   width: 580, height: 440, initialPos: { x: 210, y: 95  } },
+  // skills:     { filename: 'skills.json',   Icon: Braces,   width: 580, height: 440, initialPos: { x: 210, y: 95  } },
   experience: { filename: 'experience.md', Icon: Briefcase,width: 660, height: 500, initialPos: { x: 200, y: 80  } },
   projects:   { filename: 'projects.json', Icon: Layers,   width: 680, height: 500, initialPos: { x: 230, y: 90  } },
   contact:    { filename: 'contact.json',  Icon: Mail,     width: 460, height: 320, initialPos: { x: 260, y: 105 } },
@@ -236,7 +236,6 @@ function EditorContent({ id }: { id: WindowId }) {
   switch (id) {
     case 'photo':      return <PhotoContent />
     case 'readme':     return <ReadmeContent />
-    case 'skills':     return <SkillsContent />
     case 'experience': return <ExperienceContent />
     case 'projects':   return <ProjectsContent />
     case 'contact':    return <ContactContent />
@@ -442,28 +441,6 @@ export default function DesktopPage() {
 
         {/* Ambient */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
-          <div
-            className="absolute right-[-1%] top-[6%] text-[clamp(5rem,13vw,13rem)] font-extrabold leading-[0.88] tracking-tight text-[#1677C8] select-none"
-            style={{ fontFamily: 'var(--font-syne)', opacity: 0.07 }}
-          >
-            SEONGHYE<br />PARK
-          </div>
-
-          {profile.interests.map((interest, i) => (
-            <div
-              key={i}
-              className="absolute text-[9px] text-[#6899BC] border border-[#C0D8F0] bg-white/70 px-2 py-0.5 select-none"
-              style={{ fontFamily: 'var(--font-ibm-plex-mono)', left: `${18 + i * 14}%`, top: `${68 + (i % 3) * 9}%` }}
-            >
-              {interest}
-            </div>
-          ))}
-
-          <div className="absolute bottom-10 right-8 text-right select-none" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>
-            <div className="text-[9px] text-[#8AAEC8]">{profile.stats.projectsShipped} projects shipped</div>
-            <div className="text-[9px] text-[#8AAEC8]">{profile.stats.openSourceContributions} open source</div>
-          </div>
-
           {windows.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
