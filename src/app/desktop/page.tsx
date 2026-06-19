@@ -399,6 +399,19 @@ export default function DesktopPage() {
     setWindows((prev) => prev.map((w) => (w.id === id ? { ...w, zIndex: newZ } : w)))
   }
 
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      setWindows((prev) => {
+        if (prev.length === 0) return prev
+        const top = prev.reduce((a, b) => (a.zIndex > b.zIndex ? a : b))
+        return prev.filter((w) => w.id !== top.id)
+      })
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
   const openIds = new Set(windows.map((w) => w.id))
 
   return (
