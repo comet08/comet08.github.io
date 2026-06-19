@@ -46,7 +46,7 @@ export default function Navigation() {
           className="text-sm text-[#1677C8] hover:opacity-70 transition-opacity tracking-[0.3em] uppercase"
           style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
         >
-          sp.
+          comet.
         </Link>
 
         {/* Desktop links */}
