@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Github, ExternalLink } from 'lucide-react'
 import projects from '@/data/projects.json'
 import type { Project } from '@/types'
@@ -98,6 +99,17 @@ export default async function ProjectPage({
             )}
           </div>
         </header>
+
+        {/* Images */}
+        {project.images && project.images.length > 0 && (
+          <div className="flex gap-4 mb-14 flex-wrap">
+            {project.images.map((src, i) => (
+              <div key={i} className="relative overflow-hidden border border-[#C0D8F0]" style={{ width: 280, height: 175 }}>
+                <Image src={src} alt={`${project.title} ${i + 1}`} fill className="object-cover" unoptimized />
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Sub-projects */}
         {project.subProjects && project.subProjects.length > 0 && (

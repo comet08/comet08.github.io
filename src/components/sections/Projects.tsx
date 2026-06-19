@@ -121,25 +121,12 @@ export default function Projects() {
                     )}
                   </div>
                 </div>
-                <div className="flex flex-col items-end gap-3 shrink-0">
-                  {project.images?.[0] && (
-                    <div className="w-32 h-20 relative overflow-hidden border border-[#C0D8F0] hidden md:block">
-                      <Image
-                        src={project.images[0]}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                        unoptimized
-                      />
-                    </div>
-                  )}
-                  <div
-                    className={`text-[#6899BC] transition-all duration-300 ${
-                      expanded === project.slug ? 'rotate-180 text-[#1677C8]' : ''
-                    }`}
-                  >
-                    <ChevronDown size={16} />
-                  </div>
+                <div
+                  className={`mt-3 text-[#6899BC] transition-all duration-300 shrink-0 ${
+                    expanded === project.slug ? 'rotate-180 text-[#1677C8]' : ''
+                  }`}
+                >
+                  <ChevronDown size={16} />
                 </div>
               </button>
 
@@ -154,6 +141,15 @@ export default function Projects() {
                     className="overflow-hidden"
                   >
                     <div className="pb-10 pl-14 space-y-0">
+                      {project.images && project.images.length > 0 && (
+                        <div className="flex gap-3 mb-6 mt-2">
+                          {project.images.map((src, ii) => (
+                            <div key={ii} className="relative overflow-hidden border border-[#C0D8F0]" style={{ width: 200, height: 120 }}>
+                              <Image src={src} alt={`${project.title} ${ii + 1}`} fill className="object-cover" unoptimized />
+                            </div>
+                          ))}
+                        </div>
+                      )}
                       {project.subProjects.map((sub, i) => (
                         <div
                           key={i}
