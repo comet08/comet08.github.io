@@ -216,8 +216,8 @@ const WIN_CFG: Record<
   WindowId,
   { filename: string; Icon: React.FC<{ size?: number; className?: string }>; width: number; height: number; initialPos: { x: number; y: number } }
 > = {
-  photo:      { filename: 'profile.jpg',   Icon: User,     width: 320, height: 380, initialPos: { x: 120, y: 60  } },
-  readme:     { filename: 'README.md',     Icon: FileText, width: 560, height: 420, initialPos: { x: 180, y: 70  } },
+  photo:      { filename: 'profile.jpg',   Icon: User,     width: 300, height: 360, initialPos: { x: 80,  y: 60  } },
+  readme:     { filename: 'README.md',     Icon: FileText, width: 540, height: 420, initialPos: { x: 400, y: 60  } },
   // skills:     { filename: 'skills.json',   Icon: Braces,   width: 580, height: 440, initialPos: { x: 210, y: 95  } },
   experience: { filename: 'experience.md', Icon: Briefcase,width: 660, height: 500, initialPos: { x: 200, y: 80  } },
   projects:   { filename: 'projects.json', Icon: Layers,   width: 680, height: 500, initialPos: { x: 230, y: 90  } },
@@ -377,8 +377,11 @@ function DesktopIcon({ id, isOpen, onClick }: { id: WindowId; isOpen: boolean; o
 // ─── Main page ─────────────────────────────────────────────────────────────────
 
 export default function DesktopPage() {
-  const [windows, setWindows] = useState<WindowInstance[]>([{ id: 'photo', zIndex: 100 }])
-  const topZRef = useRef(100)
+  const [windows, setWindows] = useState<WindowInstance[]>([
+    { id: 'photo', zIndex: 100 },
+    { id: 'readme', zIndex: 101 },
+  ])
+  const topZRef = useRef(101)
 
   const openWindow = (id: WindowId) => {
     topZRef.current += 1
@@ -431,7 +434,6 @@ export default function DesktopPage() {
         </div>
         <nav className="flex gap-8">
           <Link href="/about" className="text-[11px] text-[#6899BC] hover:text-[#0D2236] transition-colors tracking-[0.2em] uppercase" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>About</Link>
-          <Link href="/blog" className="text-[11px] text-[#6899BC] hover:text-[#0D2236] transition-colors tracking-[0.2em] uppercase" style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}>Blog</Link>
         </nav>
         <Clock />
       </header>

@@ -32,7 +32,8 @@
       "Vercel AI SDK 커스텀 구현 — 백엔드 전용 스트림 프로토콜 파싱, 제네릭 메시지 타입 설계. 사내 에이전트 SDK(a2kit) 설계 기여",
       "Mock DevTool 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
       "OpenAPI 코드젠 파이프라인 — 스펙 변경 1회로 전 앱 타입 자동 전파, 앱·백엔드 모델 분리 설계",
-      "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더 깨짐 해결, STOMP 구독 생명주기 안정화"
+      "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더 깨짐 해결, STOMP 구독 생명주기 안정화",
+      "Frontend Tech Agora 진행 — 팀 내 프론트엔드 기술 공유 세션 기획·운영"
     ],
     "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "FSD", "MSW", "OpenAPI", "STOMP", "WebSocket"]
   },
@@ -82,7 +83,7 @@
     "description": "차세대 유큐브 시스템 백엔드 개발.",
     "highlights": [
       "홈 서비스 — 무과금 회선 사용용도 관리 API 개발",
-      "홈 멀티라인 — 변경 태스크 화면 및 API 개발. DDD 적용"
+      "홈 멀티라인 — 변경 태스크 화면 및 API 개발."
     ],
     "tech": ["Spring", "JPA", "MySQL"]
   }

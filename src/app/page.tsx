@@ -86,13 +86,6 @@ const navCards = [
   },
   {
     num: '03',
-    title: 'Blog',
-    sub: '글 · 생각 · 기록',
-    href: '/blog',
-    filename: 'blog.md',
-  },
-  {
-    num: '04',
     title: 'Desktop',
     sub: '파일 · 에디터 · 탐색',
     href: '/desktop',
@@ -221,21 +214,21 @@ export default function Home() {
                     title={card.filename}
                     className="group-hover:border-[#1677C8] group-hover:shadow-[#1677C8]/20 transition-all duration-300"
                   >
-                    <div className="p-4">
+                    <div className="p-3">
                       <p
-                        className="text-[10px] text-[#1677C8] tracking-[0.3em] uppercase mb-2"
+                        className="text-[9px] text-[#1677C8] tracking-[0.3em] uppercase mb-1"
                         style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                       >
                         {card.num}
                       </p>
                       <h2
-                        className="text-sm font-bold text-[#0D2236] tracking-tight mb-1"
+                        className="text-xs font-bold text-[#0D2236] tracking-tight mb-0.5"
                         style={{ fontFamily: 'var(--font-syne)' }}
                       >
                         {card.title}
                       </h2>
                       <p
-                        className="text-[10px] text-[#8AAEC8]"
+                        className="text-[9px] text-[#8AAEC8]"
                         style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                       >
                         {card.sub}
@@ -273,7 +266,7 @@ export default function Home() {
             href={profile.social.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] text-[#A4C0D8] hover:text-[#1677C8] transition-colors tracking-widest uppercase"
+            className="text-xs text-[#6899BC] hover:text-[#1677C8] transition-colors tracking-widest uppercase font-medium"
             style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
           >
             GitHub
@@ -282,7 +275,7 @@ export default function Home() {
             href={profile.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] text-[#A4C0D8] hover:text-[#1677C8] transition-colors tracking-widest uppercase"
+            className="text-xs text-[#6899BC] hover:text-[#1677C8] transition-colors tracking-widest uppercase font-medium"
             style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
           >
             LinkedIn
@@ -291,7 +284,7 @@ export default function Home() {
             href="/resume.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] text-[#A4C0D8] hover:text-[#1677C8] transition-colors tracking-widest uppercase"
+            className="text-xs text-[#6899BC] hover:text-[#1677C8] transition-colors tracking-widest uppercase font-medium"
             style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
           >
             Resume

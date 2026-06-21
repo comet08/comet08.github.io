@@ -81,13 +81,7 @@ export default function Hero() {
               >
                 Projects
               </a>
-              <a
-                href="/blog"
-                className="px-6 py-3 border border-[#C0D8F0] text-[#6899BC] text-[10px] tracking-[0.3em] uppercase hover:border-[#6899BC] hover:text-[#1A3A52] transition-colors"
-                style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
-              >
-                Blog
-              </a>
+
             </motion.div>
           </div>
 
