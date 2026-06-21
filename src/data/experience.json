@@ -8,7 +8,7 @@
     "startDate": "2026-01",
     "endDate": null,
     "isCurrent": true,
-    "description": "AI 상담 어시스턴트 플랫폼 — 백엔드 개발.",
+    "description": "상담어드바이저 개발",
     "highlights": [
       "신규 도메인 에이전트 개발",
       "LLM 에이전트 서버 — 해시 버킷팅으로 배포 없이 트래픽 점진 전환 구조 생성",
@@ -25,7 +25,7 @@
     "startDate": "2025-07",
     "endDate": "2025-12",
     "isCurrent": false,
-    "description": "상담어드바이저 — AI 상담 지원 멀티제품 웹 클라이언트. 여러 제품이 한 백엔드를 공유하는 모노레포.",
+    "description": "상담어드바이저 개발",
     "highlights": [
       "상담 Assist 기능 개발 — LLM 기반 상담 지식 추천/검색 기능",
       "커스텀 SSE 스트리밍 구현 — 백엔드 커스텀 스트림 파싱 후 공통 패키지화",
@@ -33,9 +33,9 @@
       "Mock DevTool 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
       "OpenAPI 코드젠 파이프라인 — 스펙 변경 1회로 전 앱 타입 자동 전파, 앱·백엔드 모델 분리 설계",
       "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더 깨짐 해결, STOMP 구독 생명주기 안정화",
-      "Frontend Tech Agora 진행 — 팀 내 프론트엔드 기술 공유 세션 기획·운영"
+      "Frontend Tech Agora 기획·운영 — 프론트엔드 기술 공유 세션, 하반기에 랩 전체로 확장"
     ],
-    "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "FSD", "MSW", "OpenAPI", "STOMP", "WebSocket"]
+    "tech": ["Next.js", "TypeScript", "Turborepo", "pnpm", "MSW", "OpenAPI", "STOMP", "WebSocket"]
   },
   {
     "id": "lguplus-cx",
