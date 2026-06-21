@@ -134,7 +134,7 @@ export default function Home() {
           comet.dev
         </span>
 
-        <nav className="flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8">
           {navCards.map((l) => (
             <Link
               key={l.href}
@@ -152,7 +152,7 @@ export default function Home() {
       </header>
 
       {/* Desktop */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-8 py-10">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-5 md:px-8 py-8 md:py-10">
         <div className="w-full max-w-6xl grid md:grid-cols-[1fr_420px] gap-16 items-center">
 
           {/* Left — text + nav cards */}
@@ -190,7 +190,7 @@ export default function Home() {
                   PARK
                 </span>
                 <span
-                  className="text-[clamp(1rem,2vw,1.6rem)] text-[#8AAEC8] leading-none"
+                  className="text-[clamp(1.1rem,3vw,1.6rem)] text-[#8AAEC8] leading-none"
                   style={{ fontFamily: 'var(--font-black-han-sans)' }}
                 >
                   {profile.name}
@@ -213,7 +213,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.5 }}
-              className="grid grid-cols-2 gap-3 max-w-sm"
+              className="grid grid-cols-2 gap-3 max-w-sm w-full"
             >
               {navCards.map((card) => (
                 <Link key={card.href} href={card.href} className="group block">
