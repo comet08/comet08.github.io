@@ -2,7 +2,7 @@
   {
     "slug": "consulting-advisor",
     "title": "상담어드바이저 (LG U+) — 멀티제품 웹 클라이언트",
-    "description": "여러 제품이 한 백엔드를 공유하는 모노레포 구조. 화면보다 제품들이 공유하는 프론트 플랫폼을 만들고 그 위에서 실시간 스트리밍 도메인을 다루는 데 집중했다.",
+    "description": "여러 제품이 하나의 프론트엔드 모노레포 위에서 운영되는 AI 상담 지원 서비스. 제품 화면 개발과 함께, 실시간 스트리밍 기반 AI 채팅 기능 구현에 집중했다.",
     "tech": ["React", "Next.js", "TypeScript", "Vercel AI SDK", "Python", "LangGraph", "Turborepo", "pnpm", "FSD", "MSW", "STOMP", "OpenAPI"],
     "github": "",
     "demo": "",
