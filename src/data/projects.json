@@ -19,9 +19,10 @@
     ],
     "images": [
       "https://www.mirae-biz.com/news/photo/202505/101212_102226_510.jpg",
-      "https://news.nateimg.co.kr/orgImg/ed/2025/05/27/PS25052700336.jpg"
+      "https://news.nateimg.co.kr/orgImg/ed/2025/05/27/PS25052700336.jpg",
+      "https://newsimg.hankookilbo.com/cms/articlerelease/2025/07/01/0b8f2870-2c57-4693-aaae-f4e2a1514cf2.jpg"
     ],
-    "tags": ["AI", "스트리밍", "모노레포", "FSD"],
+    "tags": ["AI", "스트리밍", "모노레포"],
     "subProjects": [
       {
         "title": "AI 스트리밍 SDK 자체 구현",
