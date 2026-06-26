@@ -108,10 +108,6 @@ function ReadmeContent() {
   l(0, <><Ac>## Interests</Ac></>)
   profile.interests.forEach((i) => l(0, <><Pn>- </Pn><Sv>{i}</Sv></>))
   blank()
-  l(0, <><Ac>## Stats</Ac></>)
-  l(0, <><Pn>- </Pn><K>projects shipped</K><Pn>: </Pn><Sv>{profile.stats.projectsShipped}</Sv></>)
-  l(0, <><Pn>- </Pn><K>open source contributions</K><Pn>: </Pn><Sv>{profile.stats.openSourceContributions}</Sv></>)
-  blank()
   l(0, <><Ac>## Location</Ac></>)
   l(0, <><Pn>- </Pn><Sv>{profile.location}</Sv></>)
 

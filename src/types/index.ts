@@ -11,13 +11,7 @@ export interface Profile {
   bioDetail: string
   currentFocus?: string
   interests: string[]
-  stats: {
-    yearsExperience: number
-    projectsShipped: number
-    teamSize: number
-    openSourceContributions: number
-  }
-  social: {
+social: {
     github: string
     linkedin: string
     twitter?: string
