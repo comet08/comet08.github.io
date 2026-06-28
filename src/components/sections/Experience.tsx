@@ -137,6 +137,24 @@ export default function Experience() {
                     ))}
                   </ul>
 
+                  {/* Links */}
+                  {exp.links && exp.links.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-5">
+                      {exp.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 border border-[#1677C8]/30 text-[#1677C8] bg-[#1677C8]/5 hover:bg-[#1677C8]/10 transition-colors tracking-widest uppercase"
+                          style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+                        >
+                          ↗ {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+
                   {/* Tech tags */}
                   <ul className="flex flex-wrap gap-2">
                     {exp.tech.map((t) => (

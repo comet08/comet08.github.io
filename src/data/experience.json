@@ -35,6 +35,9 @@
       "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더 깨짐 해결, STOMP 구독 생명주기 안정화",
       "Frontend Tech Agora 기획·운영 — 프론트엔드 기술 공유 세션, 하반기에 랩 전체로 확장"
     ],
+    "links": [
+      { "label": "Frontend Tech Agora", "url": "https://frontend-tech-agora.vercel.app/" }
+    ],
     "tech": ["Next.js", "TypeScript", "Turborepo", "pnpm", "MSW", "OpenAPI", "STOMP", "WebSocket"]
   },
   {

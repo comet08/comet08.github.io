@@ -47,6 +47,7 @@ export interface Experience {
   location: string
   description: string
   highlights: string[]
+  links?: { label: string; url: string }[]
   tech: string[]
 }
 
