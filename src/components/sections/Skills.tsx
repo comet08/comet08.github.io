@@ -5,7 +5,10 @@ import skills from '@/data/skills.json'
 import { Monitor, Brain, Layers, Wrench } from 'lucide-react'
 import type { SkillCategory, SkillLevel } from '@/types'
 
-const data = skills as SkillCategory[]
+const categoryOrder = ['AI Agent', 'Frontend Core', 'Architecture', 'Tooling']
+const data = [...skills as SkillCategory[]].sort(
+  (a, b) => categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category)
+)
 
 const ICONS: Record<string, React.ReactNode> = {
   Monitor: <Monitor size={13} />,
@@ -46,7 +49,7 @@ export default function Skills() {
           className="text-4xl md:text-5xl font-extrabold text-[#0D2236] mb-20 tracking-tight"
           style={{ fontFamily: 'var(--font-syne)' }}
         >
-          경험
+          기술과 도구
         </motion.h2>
 
         <div className="space-y-0">

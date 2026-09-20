@@ -7,8 +7,8 @@ import Projects from '@/components/sections/Projects'
 import Contact from '@/components/sections/Contact'
 
 export const metadata = {
-  title: '박성혜 — Frontend + AI Developer',
-  description: '프론트엔드 개발자. AI 에이전트 인터페이스를 만듭니다.',
+  title: '박성혜 — AI Agent Developer',
+  description: '프론트엔드에서 시작해 AI 에이전트 서비스를 개발하는 5년차 개발자입니다.',
 }
 
 export default function AboutPage() {

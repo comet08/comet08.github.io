@@ -107,7 +107,7 @@ export default function Experience() {
                       className="text-[11px] text-[#6899BC]"
                       style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                     >
-                      {exp.company} · {exp.location}
+                      {exp.company} · {exp.team}
                     </p>
                   </div>
 
@@ -119,7 +119,7 @@ export default function Experience() {
                   </p>
 
                   {/* Highlights */}
-                  <ul className="space-y-2.5 mb-6">
+                  {exp.highlights.length > 0 && <ul className="space-y-2.5 mb-6">
                     {exp.highlights.map((h, i) => (
                       <li
                         key={i}
@@ -135,7 +135,7 @@ export default function Experience() {
                         <span>{h}</span>
                       </li>
                     ))}
-                  </ul>
+                  </ul>}
 
                   {/* Links */}
                   {exp.links && exp.links.length > 0 && (

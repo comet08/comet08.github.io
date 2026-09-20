@@ -6,10 +6,10 @@ import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '#about' },
+  { label: 'About', href: '/about#about' },
+  { label: 'Experience', href: '/about#experience' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Desktop', href: '/desktop' },
+  { label: 'Blog', href: '/blog' },
 ]
 
 export default function Navigation() {

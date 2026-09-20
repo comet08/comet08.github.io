@@ -1,5 +1,8 @@
 'use client'
 
+/* This page intentionally renders source-like text as JSX. */
+/* eslint-disable react/no-unescaped-entities, react/jsx-no-comment-textnodes, @typescript-eslint/no-unused-vars */
+
 import { useState, useEffect, useRef } from 'react'
 import { motion, useDragControls, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
@@ -245,8 +248,6 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
   const dragControls = useDragControls()
   const Icon = cfg.Icon
   const [size, setSize] = useState({ width: cfg.width, height: cfg.height })
-  const sizeRef = useRef(size)
-  sizeRef.current = size
 
   const aspect = cfg.height / cfg.width
 
@@ -255,8 +256,8 @@ function EditorWindow({ id, zIndex, onClose, onFocus }: { id: WindowId; zIndex: 
     e.preventDefault()
     const startX = e.clientX
     const startY = e.clientY
-    const startW = sizeRef.current.width
-    const startH = sizeRef.current.height
+    const startW = size.width
+    const startH = size.height
     const onMove = (ev: PointerEvent) => {
       if (id === 'photo') {
         const newW = Math.max(200, startW + ev.clientX - startX)

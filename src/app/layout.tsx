@@ -30,12 +30,12 @@ const blackHanSans = Black_Han_Sans({
 })
 
 export const metadata: Metadata = {
-  title: '박성혜 — Frontend + AI Developer',
+  title: '박성혜 — AI Agent Developer',
   description:
-    'LG U+ 5년차 프론트엔드 개발자. AI 에이전트 인터페이스와 대규모 서비스 UI를 만듭니다.',
+    '프론트엔드에서 시작해 AI 에이전트 서비스를 개발하는 5년차 개발자 박성혜입니다.',
   openGraph: {
-    title: '박성혜 — Frontend + AI Developer',
-    description: '프론트엔드의 깊이로 AI를 연결하는 개발자. LG U+ 5년 경력.',
+    title: '박성혜 — AI Agent Developer',
+    description: '문제를 정의하고 검증하며, 프론트엔드 경험을 AI 에이전트 개발로 확장하고 있습니다.',
     type: 'website',
   },
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import profile from '@/data/profile.json'
 import HeroObject from '@/components/ui/HeroObject'
 
@@ -22,7 +22,7 @@ export default function Hero() {
               className="text-[#6899BC] text-[10px] tracking-[0.5em] uppercase mb-8"
               style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
             >
-              Frontend + AI Developer
+              Frontend → AI Agent Developer
             </motion.p>
 
             {/* Name — split into two lines */}
@@ -81,7 +81,15 @@ export default function Hero() {
               >
                 Projects
               </a>
-
+              <a
+                href={profile.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border border-[#1677C8]/40 text-[#1677C8] text-[10px] font-bold tracking-[0.3em] uppercase hover:border-[#1677C8] hover:bg-[#1677C8]/5 transition-colors"
+                style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
+              >
+                Resume ↗
+              </a>
             </motion.div>
           </div>
 

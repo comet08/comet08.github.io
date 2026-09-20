@@ -1,6 +1,7 @@
 [
   {
     "slug": "test",
+    "draft": true,
     "title": "테스트",
     "date": "2026-04-05",
     "category": "General",

@@ -11,7 +11,7 @@ const data = projects as Project[]
 
 export default function Projects() {
   const featured = data.filter((p) => p.featured)
-  const [expanded, setExpanded] = useState<string | null>(featured[0]?.slug ?? null)
+  const [expanded, setExpanded] = useState<string | null>(null)
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
 
   return (
@@ -176,7 +176,7 @@ export default function Projects() {
                             </p>
                           </div>
                           <p
-                            className="text-[11px] text-[#1677C8]/70 whitespace-nowrap mt-1 group-hover/sub:text-[#1677C8] transition-colors"
+                            className="text-[11px] text-[#1677C8]/70 md:max-w-64 mt-1 group-hover/sub:text-[#1677C8] transition-colors"
                             style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
                           >
                             → {sub.result}

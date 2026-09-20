@@ -4,7 +4,7 @@ export interface Profile {
   title: string
   tagline?: string
   company: string
-  years: number
+  years?: number
   email: string
   location: string
   bio: string
@@ -25,7 +25,7 @@ export type SkillLevel = 'expert' | 'proficient' | 'learning'
 export interface Skill {
   name: string
   level: SkillLevel
-  years: number
+  years?: number
 }
 
 export interface SkillCategory {
@@ -44,7 +44,7 @@ export interface Experience {
   startDate: string
   endDate: string | null
   isCurrent: boolean
-  location: string
+  team: string
   description: string
   highlights: string[]
   links?: { label: string; url: string }[]

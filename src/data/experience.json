@@ -4,15 +4,14 @@
     "company": "LG U+",
     "role": "Applied AI Developer",
     "team": "CX SaaS개발팀",
-    "period": "2026 ~",
+    "period": "2026.01 ~ 현재",
     "startDate": "2026-01",
     "endDate": null,
     "isCurrent": true,
-    "description": "상담어드바이저 개발",
+    "description": "도메인 특화 지식 검색 에이전트를 개발하고 개선합니다.",
     "highlights": [
-      "신규 도메인 에이전트 개발",
-      "LLM 에이전트 서버 — 해시 버킷팅으로 배포 없이 트래픽 점진 전환 구조 생성",
-      "공통 코어 DI 컨테이너 다형성 설계(core-package) — multi tenant 클래스·팩토리·컨테이너 모두 수용하는 확장점"
+      "도메인 특화 지식 검색 에이전트 개발 — LLM으로 초기 평가용 질문·답변 세트 생성, 검색 범위 제어 도구 구현",
+      "도메인 전문가 검증으로 질문 유형별 필수 정보·답변 형식의 중요성 확인 — 피드백 반영과 출력 재검증을 반복해 출시"
     ],
     "tech": ["Python", "LangGraph", "LangChain", "MongoDB", "FastAPI"]
   },
@@ -21,22 +20,15 @@
     "company": "LG U+",
     "role": "Frontend Developer",
     "team": "CX SaaS개발팀",
-    "period": "2025 ~ 2025",
+    "period": "2025.07 ~ 2025.12",
     "startDate": "2025-07",
     "endDate": "2025-12",
     "isCurrent": false,
-    "description": "상담어드바이저 개발",
+    "description": "AI 상담 서비스의 스트리밍 인터페이스와 공통 개발 도구를 개발했습니다.",
     "highlights": [
-      "상담 Assist 기능 개발 — LLM 기반 상담 지식 추천/검색 기능",
-      "커스텀 SSE 스트리밍 구현 — 백엔드 커스텀 스트림 파싱 후 공통 패키지화",
-      "Vercel AI SDK 커스텀 구현 — 백엔드 전용 스트림 프로토콜 파싱, 제네릭 메시지 타입 설계. 사내 에이전트 SDK(a2kit) 설계 기여",
+      "AI 스트리밍 SDK 구현 — 백엔드 커스텀 프로토콜 파싱과 제네릭 메시지 타입 설계, 사내 에이전트 SDK(a2kit) 설계 기여",
       "Mock DevTool 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
-      "OpenAPI 코드젠 파이프라인 — 스펙 변경 1회로 전 앱 타입 자동 전파, 앱·백엔드 모델 분리 설계",
-      "스트리밍 렌더 안정화 — 토큰 단위 스트리밍 중 마크다운 렌더 깨짐 해결, STOMP 구독 생명주기 안정화",
-      "Frontend Tech Agora 기획·운영 — 프론트엔드 기술 공유 세션, 하반기에 랩 전체로 확장"
-    ],
-    "links": [
-      { "label": "Frontend Tech Agora", "url": "https://frontend-tech-agora.vercel.app/" }
+      "OpenAPI 코드젠 파이프라인 — 스펙 변경을 전 앱에 자동 반영하고 생성 모델과 앱 도메인 모델의 경계를 분리"
     ],
     "tech": ["Next.js", "TypeScript", "Turborepo", "pnpm", "MSW", "OpenAPI", "STOMP", "WebSocket"]
   },
@@ -45,15 +37,14 @@
     "company": "LG U+",
     "role": "Frontend Developer",
     "team": "CX FE개발팀",
-    "period": "2024 ~ 2025",
+    "period": "2024.05 ~ 2025.06",
     "startDate": "2024-05",
     "endDate": "2025-06",
     "isCurrent": false,
     "description": "AI 상담 어시스턴트 초기 버전 + 개발 인프라 구축.",
     "highlights": [
-      "상담어드바이저 — Electron 기반 웹앱 개발",
-      "WebSocket(STOMP) 실시간 통신 구현 — 상담 데이터 실시간 수신 플로우 개발",
-      "STOMP Mock 서버 직접 구축 — bun으로 백엔드 없이 WebSocket 구독·메시지 흐름 로컬 재현"
+      "Turborepo·pnpm 기반 멀티 앱 구조와 공통 패키지 설계 — 9개 서비스로 확장 가능한 개발 기반 구축",
+      "백엔드 연동이 제한된 환경에서 bun 기반 STOMP Mock 서버 구축 — WebSocket 구독과 메시지 흐름을 로컬에서 재현"
     ],
     "tech": ["React", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "bun", "MSW", "STOMP", "WebSocket", "SSE"]
   },
@@ -62,13 +53,13 @@
     "company": "LG U+",
     "role": "Frontend Developer",
     "team": "디지털통신FE개발팀",
-    "period": "2023 ~ 2024",
+    "period": "2023.03 ~ 2024.02",
     "startDate": "2023-03",
     "endDate": "2024-02",
     "isCurrent": false,
     "description": "Nerget — 통신 상품 가입·개통·관리 서비스. RN 앱·Next.js 웹·웹뷰 모노레포.",
     "highlights": [
-      "번호이동·부스터 가입·분실신고 등 통신 핵심 도메인 기능 개발",
+      "앱 번들 17.1MB → 9.55MB 개선 — 운영 번들의 dev 의존성과 전체 import를 측정·제거하고 ESLint로 재유입 방지",
       "모노레포 공유 패키지 설계 — 복붙 코드를 utils/styles/hooks 패키지로 추출, 순환 의존 제거",
       "WebView ↔ Native 메시지 브리지 — 화면마다 따로 짜던 전환·이벤트를 표준 프로토콜로 통일, 멀티스텝 결제용 원자적 스택 교체(popAndStack) 추가"
     ],
@@ -79,15 +70,12 @@
     "company": "LG U+",
     "role": "Backend Developer",
     "team": "유큐브개발팀",
-    "period": "2022 ~ 2023",
+    "period": "2022.01 ~ 2023.02",
     "startDate": "2022-01",
     "endDate": "2023-02",
     "isCurrent": false,
     "description": "차세대 유큐브 시스템 백엔드 개발.",
-    "highlights": [
-      "홈 서비스 — 무과금 회선 사용용도 관리 API 개발",
-      "홈 멀티라인 — 변경 태스크 화면 및 API 개발."
-    ],
+    "highlights": [],
     "tech": ["Spring", "JPA", "MySQL"]
   }
 ]
