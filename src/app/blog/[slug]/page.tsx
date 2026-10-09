@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import posts from '@/data/posts.json'
 import BlogHeader from '@/components/blog/BlogHeader'
 import Sidebar from './Sidebar'
+import { SITE_URL, SITE_NAME, AUTHOR, postUrl, postDate } from '@/lib/site'
 
 interface Post { slug: string; title: string; date: string; category: string; excerpt: string; content: string; image?: string; draft?: boolean }
 const sourcePosts = posts as Post[]
@@ -13,11 +14,30 @@ const grouped = allPosts.reduce<Record<string, Post[]>>((acc, post) => {
   return acc
 }, {})
 
-export function generateStaticParams() { return sourcePosts.map((post) => ({ slug: post.slug })) }
+export const dynamicParams = false
+export function generateStaticParams() { return allPosts.map((post) => ({ slug: post.slug })) }
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = allPosts.find((item) => item.slug === slug)
-  return { title: post ? `${post.title} — comet.dev` : '글을 찾을 수 없습니다', description: post?.excerpt }
+  if (!post) return { title: '글을 찾을 수 없습니다', robots: { index: false } }
+  const url = postUrl(post.slug)
+  return {
+    title: `${post.title} — ${SITE_NAME}`,
+    description: post.excerpt,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      url,
+      title: post.title,
+      description: post.excerpt,
+      siteName: SITE_NAME,
+      locale: 'ko_KR',
+      publishedTime: postDate(post.date),
+      authors: [AUTHOR],
+      section: post.category,
+    },
+    twitter: { card: 'summary', title: post.title, description: post.excerpt },
+  }
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -33,9 +53,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const index = allPosts.findIndex((item) => item.slug === slug)
   const newer = allPosts[index - 1]
   const older = allPosts[index + 1]
+  const url = postUrl(post.slug)
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      url,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      datePublished: postDate(post.date),
+      dateModified: postDate(post.date),
+      inLanguage: 'ko-KR',
+      articleSection: post.category,
+      author: { '@type': 'Person', name: AUTHOR, url: SITE_URL },
+      publisher: { '@type': 'Person', name: AUTHOR, url: SITE_URL },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: SITE_NAME, item: `${SITE_URL}/blog/` },
+        { '@type': 'ListItem', position: 2, name: post.title, item: url },
+      ],
+    },
+  ]
 
   return (
     <div className="dev-blog">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
       <BlogHeader />
       <main className="blog-reader-layout">
         <aside className="blog-reader-nav"><Sidebar grouped={grouped} currentSlug={slug} /></aside>

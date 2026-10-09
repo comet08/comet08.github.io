@@ -3,6 +3,7 @@ import { Syne, IBM_Plex_Serif, IBM_Plex_Mono, Black_Han_Sans } from 'next/font/g
 import Script from 'next/script'
 import CustomCursor from '@/components/ui/CustomCursor'
 import './globals.css'
+import { SITE_URL } from '@/lib/site'
 
 const syne = Syne({
   variable: '--font-syne',
@@ -30,6 +31,7 @@ const blackHanSans = Black_Han_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: '박성혜 — AI Agent Developer',
   description:
     '프론트엔드에서 시작해 AI 에이전트 서비스를 개발하는 5년차 개발자 박성혜입니다.',
