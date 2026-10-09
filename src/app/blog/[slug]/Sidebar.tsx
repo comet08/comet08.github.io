@@ -25,7 +25,7 @@ export default function Sidebar({ grouped, currentSlug }: Props) {
   return (
     <div className="sticky top-24 space-y-1">
       <p
-        className="text-[10px] text-[#ADB5BD] tracking-[0.35em] uppercase mb-4"
+        className="text-[10px] text-[#6899BC] tracking-[0.35em] uppercase mb-4"
         style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
       >
         Posts
@@ -35,15 +35,15 @@ export default function Sidebar({ grouped, currentSlug }: Props) {
           <button
             aria-expanded={openCategories[category]}
             onClick={() => toggle(category)}
-            className="w-full flex items-center justify-between text-left px-2 py-1.5 rounded hover:bg-[#E9ECEF] transition-colors"
+            className="w-full flex items-center justify-between text-left px-2 py-1.5 rounded hover:bg-[#E4EFFC] transition-colors"
           >
             <span
-              className="text-[11px] font-medium text-[#495057]"
+              className="text-[11px] font-medium text-[#1A3A52]"
               style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
             >
               {category}
             </span>
-            <span className="text-[10px] text-[#ADB5BD]">
+            <span className="text-[10px] text-[#6899BC]">
               {openCategories[category] ? '▾' : '▸'}
             </span>
           </button>
@@ -54,8 +54,8 @@ export default function Sidebar({ grouped, currentSlug }: Props) {
               aria-current={p.slug === currentSlug ? "page" : undefined}
               className={`block px-3 py-1.5 ml-2 rounded text-[12px] transition-colors truncate ${
                 p.slug === currentSlug
-                  ? 'text-[#1677C8] font-medium bg-[#1677C8]/5'
-                  : 'text-[#868E96] hover:text-[#343A40] hover:bg-[#E9ECEF]'
+                  ? 'text-[#1677C8] font-medium bg-[#1677C8]/10'
+                  : 'text-[#4A7499] hover:text-[#0D2236] hover:bg-[#E4EFFC]'
               }`}
               style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
             >
