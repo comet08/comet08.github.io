@@ -40,7 +40,6 @@ export default function BlogPage() {
                 </button>
               ))}
             </div>
-            <div className="blog-author-note"><strong>박성혜</strong><p>Frontend → AI Agent<br />직접 겪은 문제와 선택의 기록.</p></div>
           </aside>
           <section aria-label="글 목록" className="min-w-0">
             <div className="blog-list-heading"><h2>{category === '전체' ? '모든 글' : category}</h2><span aria-live="polite">{filtered.length}개의 기록</span></div>
