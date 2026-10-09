@@ -24,7 +24,8 @@
       "LLM",
       "Eval",
       "Lessons Learned"
-    ]
+    ],
+    "draft": true
   },
   {
     "slug": "test",
