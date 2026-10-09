@@ -6,13 +6,13 @@ import BlogHeader from '@/components/blog/BlogHeader'
 import Sidebar from './Sidebar'
 import { SITE_URL, SITE_NAME, AUTHOR, postUrl, postDate } from '@/lib/site'
 
-interface Post { slug: string; title: string; date: string; category: string; excerpt: string; content: string; image?: string; draft?: boolean }
+interface Post { slug: string; title: string; date: string; category: string; tags?: string[]; excerpt: string; content: string; image?: string; draft?: boolean }
 const sourcePosts = posts as Post[]
 const allPosts = sourcePosts.filter((post) => !post.draft).sort((a, b) => b.date.localeCompare(a.date))
-const grouped = allPosts.reduce<Record<string, Post[]>>((acc, post) => {
-  (acc[post.category] ??= []).push(post)
-  return acc
-}, {})
+const recentPosts = allPosts.slice(0, 5)
+const tagCounts = allPosts.flatMap((post) => post.tags ?? []).reduce<Record<string, number>>((acc, tag) => ({ ...acc, [tag]: (acc[tag] ?? 0) + 1 }), {})
+const sideCategories = Object.entries(allPosts.reduce<Record<string, number>>((acc, post) => ({ ...acc, [post.category]: (acc[post.category] ?? 0) + 1 }), {})).map(([name, count]) => ({ name, count }))
+const sideTags = Object.entries(tagCounts).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
 
 export const dynamicParams = false
 export function generateStaticParams() { return allPosts.map((post) => ({ slug: post.slug })) }
@@ -66,6 +66,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       dateModified: postDate(post.date),
       inLanguage: 'ko-KR',
       articleSection: post.category,
+      keywords: post.tags?.join(', '),
       author: { '@type': 'Person', name: AUTHOR, url: SITE_URL },
       publisher: { '@type': 'Person', name: AUTHOR, url: SITE_URL },
     },
@@ -84,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
       <BlogHeader />
       <main className="blog-reader-layout">
-        <aside className="blog-reader-nav"><Sidebar grouped={grouped} currentSlug={slug} /></aside>
+        <aside className="blog-reader-nav"><Sidebar recent={recentPosts} categories={sideCategories} tags={sideTags} currentSlug={slug} /></aside>
         <article className="blog-article">
           <Link className="blog-back" href="/blog">← 모든 글</Link>
           <header className="blog-article-header">
@@ -93,6 +94,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p className="blog-deck">{post.excerpt}</p>
             <div className="blog-post-meta"><span>박성혜</span><time dateTime={post.date}>{post.date.replaceAll('-', '.')}</time><span>{Math.max(1, Math.ceil(post.content.replace(/<[^>]+>/g, '').length / 500))}분 읽기</span></div>
           </header>
+          {post.tags && <ul className="blog-tags blog-tags-article" aria-label="태그">{post.tags.map((item) => <li key={item}><Link href={`/blog?tag=${encodeURIComponent(item)}`}>#{item}</Link></li>)}</ul>}
           {post.image && <Image src={post.image} alt={post.title} width={960} height={540} className="blog-cover" />}
           {headings.length > 0 && <details className="blog-mobile-toc"><summary>이 글의 목차</summary><nav aria-label="본문 목차">{headings.map((heading) => <a key={heading.id} href={`#${heading.id}`}>{heading.title}</a>)}</nav></details>}
           <div className="prose blog-prose max-w-none" dangerouslySetInnerHTML={{ __html: content }} />

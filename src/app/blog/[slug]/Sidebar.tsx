@@ -1,69 +1,46 @@
-'use client'
-
-import { useState } from 'react'
 import Link from 'next/link'
 
 interface Post {
   slug: string
   title: string
-  category: string
+  date: string
 }
 
 interface Props {
-  grouped: Record<string, Post[]>
+  recent: Post[]
+  categories: { name: string; count: number }[]
+  tags: { name: string; count: number }[]
   currentSlug: string
 }
 
-export default function Sidebar({ grouped, currentSlug }: Props) {
-  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(
-    Object.keys(grouped).reduce((a, k) => ({ ...a, [k]: true }), {})
-  )
-
-  const toggle = (cat: string) =>
-    setOpenCategories((prev) => ({ ...prev, [cat]: !prev[cat] }))
-
+export default function Sidebar({ recent, categories, tags, currentSlug }: Props) {
   return (
-    <div className="sticky top-24 space-y-1">
-      <p
-        className="text-[10px] text-[#6899BC] tracking-[0.35em] uppercase mb-4"
-        style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
-      >
-        Posts
-      </p>
-      {Object.entries(grouped).map(([category, posts]) => (
-        <div key={category}>
-          <button
-            aria-expanded={openCategories[category]}
-            onClick={() => toggle(category)}
-            className="w-full flex items-center justify-between text-left px-2 py-1.5 rounded hover:bg-[#E4EFFC] transition-colors"
-          >
-            <span
-              className="text-[11px] font-medium text-[#1A3A52]"
-              style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
-            >
-              {category}
-            </span>
-            <span className="text-[10px] text-[#6899BC]">
-              {openCategories[category] ? '▾' : '▸'}
-            </span>
-          </button>
-          {openCategories[category] && posts.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/blog/${p.slug}`}
-              aria-current={p.slug === currentSlug ? "page" : undefined}
-              className={`block px-3 py-1.5 ml-2 rounded text-[12px] transition-colors truncate ${
-                p.slug === currentSlug
-                  ? 'text-[#1677C8] font-medium bg-[#1677C8]/10'
-                  : 'text-[#4A7499] hover:text-[#0D2236] hover:bg-[#E4EFFC]'
-              }`}
-              style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
-            >
-              {p.title}
-            </Link>
-          ))}
-        </div>
-      ))}
+    <div className="blog-side">
+      <p className="blog-eyebrow">RECENT</p>
+      <div className="blog-side-posts">
+        {recent.map((post) => (
+          <Link key={post.slug} href={`/blog/${post.slug}`} aria-current={post.slug === currentSlug ? 'page' : undefined}>
+            <span>{post.title}</span>
+            <time dateTime={post.date}>{post.date.replaceAll('-', '.')}</time>
+          </Link>
+        ))}
+      </div>
+      <p className="blog-eyebrow">CATEGORIES</p>
+      <div className="blog-category-list">
+        {categories.map((category) => (
+          <Link key={category.name} href={`/blog?category=${encodeURIComponent(category.name)}`}><span>{category.name}</span><span>{category.count}</span></Link>
+        ))}
+      </div>
+      {tags.length > 0 && (
+        <>
+          <p className="blog-eyebrow">TAGS</p>
+          <div className="blog-side-tags">
+            {tags.map((tag) => (
+              <Link key={tag.name} href={`/blog?tag=${encodeURIComponent(tag.name)}`}>#{tag.name}<span>{tag.count}</span></Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   )
 }
