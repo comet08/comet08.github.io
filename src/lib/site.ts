@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://comet08.github.io'
+export const SITE_URL = 'https://comet08.dev'
 export const SITE_NAME = 'comet.dev'
 export const AUTHOR = '박성혜'
 
