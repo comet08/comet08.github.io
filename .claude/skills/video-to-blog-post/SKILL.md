@@ -35,7 +35,7 @@ python3 -m venv "$TMPDIR/yt" && "$TMPDIR/yt/bin/pip" install -q youtube-transcri
 - 기존 글과 같은 문체: `~다` 체, 짧은 문단, 군더더기 없는 설명. 번역투와 과장 표현을 피한다.
 - 허용 태그: `p, h2, h3, ul, ol, li, strong, code, a, blockquote, pre, figure/figcaption, iframe, svg`. 본문 스타일은 `.blog-prose`가 맡는다.
 - 긴 인용은 하지 않는다. 발표 내용은 **내 말로 풀어서** 쓰고, 짧은 구절만 인용한다(저작권).
-- 필드: `slug`(영문 kebab-case, 중복 금지), `title`(`주제: 발표자 워크숍 정리` 형태 권장), `date`(`date +%F`), `category`(보통 `AI Engineering`), `excerpt`(한두 문장, 검색 설명으로도 쓰이니 150자 안팎), `content`(HTML 문자열).
+- 필드: `slug`(영문 kebab-case, 중복 금지), `title`(`주제: 발표자 워크숍 정리` 형태 권장), `date`(`date +%F`), `category`(보통 `AI Engineering`), `tags`(3~4개, 예: `["AI Agent", "LangGraph", "Talk"]`. 태그 필터와 SEO keywords에 쓰인다), `excerpt`(한두 문장, 검색 설명으로도 쓰이니 150자 안팎), `content`(HTML 문자열).
 
 ### 4. 시각 자료 (프레임 캡처 하지 않는다)
 - **영상 프레임 캡처는 하지 않는다.** yt-dlp 다운로드는 YouTube의 SABR 강제로 실패했고, 쿠키로 우회하지도 않는다. 발표 화면을 복제하면 저작권과 사내 화면 노출 문제가 있다.
