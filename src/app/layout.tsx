@@ -3,7 +3,7 @@ import { Syne, IBM_Plex_Serif, IBM_Plex_Mono, Black_Han_Sans } from 'next/font/g
 import Script from 'next/script'
 import CustomCursor from '@/components/ui/CustomCursor'
 import './globals.css'
-import { SITE_URL } from '@/lib/site'
+import { SITE_URL, OG_IMAGE } from '@/lib/site'
 
 const syne = Syne({
   variable: '--font-syne',
@@ -41,7 +41,9 @@ export const metadata: Metadata = {
     title: '박성혜 — AI Agent Developer',
     description: '문제를 정의하고 검증하며, 프론트엔드 경험을 AI 에이전트 개발로 확장하고 있습니다.',
     type: 'website',
+    images: [OG_IMAGE],
   },
+  twitter: { card: 'summary_large_image', images: [OG_IMAGE.url] },
 }
 
 export default function RootLayout({

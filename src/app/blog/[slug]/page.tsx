@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import posts from '@/data/posts.json'
 import BlogHeader from '@/components/blog/BlogHeader'
 import Sidebar from './Sidebar'
-import { SITE_URL, SITE_NAME, AUTHOR, postUrl, postDate } from '@/lib/site'
+import { SITE_URL, SITE_NAME, AUTHOR, OG_IMAGE, postUrl, postDate } from '@/lib/site'
 
 interface Post { slug: string; title: string; date: string; category: string; tags?: string[]; excerpt: string; content: string; image?: string; draft?: boolean }
 const sourcePosts = posts as Post[]
@@ -35,8 +35,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       publishedTime: postDate(post.date),
       authors: [AUTHOR],
       section: post.category,
+      images: [OG_IMAGE],
     },
-    twitter: { card: 'summary', title: post.title, description: post.excerpt },
+    twitter: { card: 'summary_large_image', title: post.title, description: post.excerpt, images: [OG_IMAGE.url] },
   }
 }
 

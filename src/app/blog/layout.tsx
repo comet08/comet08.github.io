@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { SITE_URL, SITE_NAME } from '@/lib/site'
+import { SITE_URL, SITE_NAME, OG_IMAGE } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: '개발 기록 — comet.dev',
@@ -15,7 +15,9 @@ export const metadata: Metadata = {
     description: '프론트엔드부터 AI 에이전트까지, 문제를 정의하고 해결하며 배운 것을 기록합니다.',
     siteName: SITE_NAME,
     locale: 'ko_KR',
+    images: [OG_IMAGE],
   },
+  twitter: { card: 'summary_large_image', images: [OG_IMAGE.url] },
 }
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
