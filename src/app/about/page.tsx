@@ -7,7 +7,7 @@ import Projects from '@/components/sections/Projects'
 import Contact from '@/components/sections/Contact'
 
 export const metadata = {
-  title: '박성혜 — AI Agent Developer',
+  title: '박성혜 — Developer',
   description: '프론트엔드에서 시작해 AI 에이전트 서비스를 개발하는 5년차 개발자입니다.',
 }
 

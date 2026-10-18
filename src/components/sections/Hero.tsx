@@ -22,7 +22,7 @@ export default function Hero() {
               className="text-[#6899BC] text-[10px] tracking-[0.5em] uppercase mb-8"
               style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
             >
-              Frontend → AI Agent Developer
+              Developer
             </motion.p>
 
             {/* Name — split into two lines */}
