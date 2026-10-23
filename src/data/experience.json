@@ -3,7 +3,7 @@
     "id": "lguplus-2026",
     "company": "LG U+",
     "role": "Applied AI Developer",
-    "team": "AICC Assistant개발팀",
+    "team": "도메인 특화 AI 에이전트 개발",
     "period": "2026.01 ~ 현재",
     "startDate": "2026-01",
     "endDate": null,
@@ -16,43 +16,29 @@
     "tech": ["Python", "LangGraph", "LangChain", "MongoDB", "FastAPI"]
   },
   {
-    "id": "lguplus-saas",
-    "company": "LG U+",
-    "role": "Frontend Developer",
-    "team": "CX SaaS개발팀",
-    "period": "2025.07 ~ 2025.12",
-    "startDate": "2025-07",
-    "endDate": "2025-12",
-    "isCurrent": false,
-    "description": "AI 상담 서비스의 스트리밍 인터페이스와 공통 개발 도구를 개발했습니다.",
-    "highlights": [
-      "AI 스트리밍 SDK 구현 — 백엔드 커스텀 프로토콜 파싱과 제네릭 메시지 타입 설계, 사내 에이전트 SDK(a2kit) 설계 기여",
-      "Mock DevTool 구축 (MSW 기반) — 런타임 mock 제어로 팀 전체 백엔드 독립 개발·QA 가능",
-      "OpenAPI 코드젠 파이프라인 — 스펙 변경을 전 앱에 자동 반영하고 생성 모델과 앱 도메인 모델의 경계를 분리"
-    ],
-    "tech": ["Next.js", "TypeScript", "Turborepo", "pnpm", "MSW", "OpenAPI", "STOMP", "WebSocket"]
-  },
-  {
     "id": "lguplus-cx",
     "company": "LG U+",
     "role": "Frontend Developer",
-    "team": "CX FE개발팀",
-    "period": "2024.05 ~ 2025.06",
+    "team": "상담 어드바이저 개발",
+    "period": "2024.05 ~ 2025.12",
     "startDate": "2024-05",
-    "endDate": "2025-06",
+    "endDate": "2025-12",
     "isCurrent": false,
-    "description": "AI 상담 어시스턴트 초기 버전 + 개발 인프라 구축.",
+    "description": "AI 상담 서비스의 앱·웹뷰와 스트리밍 인터페이스, 공통 개발 도구를 개발했습니다.",
     "highlights": [
-      "Turborepo·pnpm 기반 멀티 앱 구조와 공통 패키지 설계 — 9개 서비스로 확장 가능한 개발 기반 구축",
-      "백엔드 연동이 제한된 환경에서 bun 기반 STOMP Mock 서버 구축 — WebSocket 구독과 메시지 흐름을 로컬에서 재현"
+      "Electron 상담 어드바이저 앱 — 상담 중 여러 창에 앱이 가려지는 문제를 웹↔앱 IPC로 \"항상 위에 두기\" 기능으로 해결하고, 중복 실행을 단일 인스턴스로 제한",
+      "AI 스트리밍 SDK(a2kit) — 백엔드 커스텀 스트림 파싱 레이어와 제네릭 메시지 타입을 설계·구현하고, 표준 훅 인터페이스 뒤로 백엔드 고유 프로토콜을 숨김",
+      "OpenAPI 코드젠 — 스펙 변경을 전 앱에 자동 반영하고 생성 모델과 앱 도메인 모델의 경계를 분리",
+      "Mock 개발 환경 — bun 기반 STOMP Mock 서버와 MSW 기반 Mock DevTool로 팀 전체의 백엔드 독립 개발·QA 지원",
+      "FSD 아키텍처로 운영 중인 서비스를 페이지 단위로 점진 전환"
     ],
-    "tech": ["React", "TypeScript", "Vercel AI SDK", "Turborepo", "pnpm", "bun", "MSW", "STOMP", "WebSocket", "SSE"]
+    "tech": ["React", "Next.js", "TypeScript", "Electron", "Turborepo", "pnpm", "bun", "MSW", "OpenAPI", "STOMP", "WebSocket", "SSE"]
   },
   {
     "id": "lguplus-nugget",
     "company": "LG U+",
     "role": "Frontend Developer",
-    "team": "디지털통신FE개발팀",
+    "team": "너겟(통신 가입·관리 서비스) 개발",
     "period": "2023.03 ~ 2024.02",
     "startDate": "2023-03",
     "endDate": "2024-02",
@@ -69,7 +55,7 @@
     "id": "lguplus-ucube",
     "company": "LG U+",
     "role": "Backend Developer",
-    "team": "유큐브개발팀",
+    "team": "차세대 유큐브 시스템 개발",
     "period": "2022.01 ~ 2023.02",
     "startDate": "2022-01",
     "endDate": "2023-02",
