@@ -389,9 +389,10 @@
         </div>
         <ul class="highlights">
           <li>Electron 상담 어드바이저 앱 — 상담 중 여러 창이 함께 떠서 앱이 가려지는 문제를 웹↔앱 IPC로 "항상 위에 두기" 기능으로 해결. 앱을 다시 클릭하면 여러 개 뜨던 것을 단일 인스턴스로 제한하고 기존 앱이 포그라운드로 올라오게 수정</li>
-          <li>AI 스트리밍 SDK(a2kit) — 라이브러리만으로 다룰 수 없던 백엔드 커스텀 스트림(툴콜·출처 등)의 파싱 레이어와 제네릭 메시지 타입을 설계·구현하고, 표준 훅 인터페이스 뒤로 백엔드 고유 프로토콜을 숨김</li>
+          <li>AI 채팅 스트리밍 — 커스텀 SSE 스트리밍 패키지를 만들어 상담 어드바이저·AI 헬프데스크에서 공통으로 사용. 사내 AI 채팅 패키지 a2kit에서는 타입 선언만 있던 부분을 실제 구현으로 대체하고, 앱마다 다른 메시지 구조를 타입 파라미터로 주입하는 제네릭 구조로 설계</li>
           <li>OpenAPI 코드젠 — 개발 중 스펙 불일치로 화면이 깨지고 맞추는 데 시간이 드는 문제를 겪고, 동료들도 같은 불편을 겪고 있음을 확인해 구축. 생성 모델과 앱 도메인 모델의 경계를 분리</li>
           <li>Mock 개발 환경 — PoC 일정이 촉박한 상황에서 백엔드를 기다리지 않도록 bun 기반 STOMP Mock 서버로 WebSocket 흐름을 로컬에서 재현. 런타임에 목 응답을 제어하는 Mock DevTool(MSW 기반으로 재설계)로 팀 전체의 백엔드 독립 개발·QA 지원</li>
+          <li>공통 라이브러리(SONA) — 너겟에서 쓰던 유틸·훅을 다음 프로젝트에서도 쓰도록 공통 라이브러리로 분리해 구현하고, 유틸과 React 패키지를 나눠 CJS·ESM을 동시에 지원하는 빌드 구조를 구성 (2024)</li>
           <li>FSD 아키텍처로 운영 중인 서비스를 페이지 단위로 점진 전환</li>
         </ul>
         <div class="tech-tags">
@@ -410,7 +411,8 @@
           <li>앱 ↔ 웹뷰 뒤로가기 스택 불일치 — 스와이프 뒤로가기와 헤더 뒤로가기의 동작 차이를 발견. 앱과 웹이 각자 다른 이동 스택을 쌓는 것이 원인이라 보고, postMessage 규약을 정하고 popAndStack 추가</li>
           <li>웹뷰 쿠키 인증 이슈 — 테스트 중 발견, 웹뷰가 네이티브 영역이라 라이브러리의 iOS/Android 네이티브 구현까지 직접 분석해 핫픽스</li>
           <li>앱 번들 44% 감소 (17.1MB → 9.55MB) — 번들 분석 라이브러리로 직접 열어 보다 운영 번들에 포함된 mock 라이브러리(faker·mirage)를 발견해 제외. lodash 개별 import로 추가 절감, ESLint로 재유입 차단</li>
-          <li>모노레포 공유 패키지 설계 — utils/styles/hooks 추출, 순환 의존 제거</li>
+          <li>버튼 연타로 API가 중복 호출되어 서버 에러가 다건 발생하던 문제 — API 체이닝 중 로딩 상태가 잠깐 끊겨 버튼 disable이 풀리는 것이 원인임을 찾아, 로딩 상태를 전역 스토어로 옮겨 해결</li>
+          <li>통신 회선 가입·개통 플로우 개발 — 번호이동·자급제 이동에서 하나의 화면을 단계 Flag로 가입/개통 두 용도로 분기하고, 값이 바뀌었을 때만 저장 API를 호출</li>
         </ul>
         <div class="tech-tags">
           <span class="tag">React Native</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Turborepo</span><span class="tag">React Query</span><span class="tag">Zustand</span><span class="tag">CodePush</span>
