@@ -5,7 +5,7 @@ LG U+ · Seoul, South Korea
 
 > 프론트엔드와 AI 응용 개발에 관심이 있습니다.
 
-🔗 **[comet08.github.io](https://comet08.github.io)**
+🔗 **[comet08.dev](https://comet08.dev)**
 
 ---
 

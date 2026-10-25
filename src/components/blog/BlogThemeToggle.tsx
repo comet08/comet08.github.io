@@ -26,6 +26,8 @@ export default function BlogThemeToggle() {
 
   useEffect(() => {
     const initialTheme = preferredTheme()
+    // 서버 렌더링 뒤 localStorage와 시스템 설정을 기준으로 버튼 상태를 맞춘다.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(initialTheme)
     applyTheme(initialTheme)
   }, [])
