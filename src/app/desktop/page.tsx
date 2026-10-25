@@ -201,7 +201,6 @@ function ContactContent() {
   l(1, <><K>"email"</K><Pn>: </Pn><Sv>"{profile.email}"</Sv><Pn>,</Pn></>)
   l(1, <><K>"github"</K><Pn>: </Pn><Sv>"{profile.social.github}"</Sv><Pn>,</Pn></>)
   l(1, <><K>"linkedin"</K><Pn>: </Pn><Sv>"{profile.social.linkedin}"</Sv><Pn>,</Pn></>)
-  l(1, <><K>"resume"</K><Pn>: </Pn><Sv>"{profile.resume}"</Sv><Pn>,</Pn></>)
   blank()
   l(1, <><Cm>// Prefer async comms. Response within 1–2 days.</Cm></>)
   l(0, <><Pn>{'}'}</Pn></>)

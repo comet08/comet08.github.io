@@ -31,7 +31,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 48 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="text-[clamp(2.4rem,6vw,5rem)] font-extrabold text-[#0D2236] leading-[0.9] tracking-tight"
+                className="text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold text-[#0D2236] leading-[0.9] tracking-tight"
                 style={{ fontFamily: 'var(--font-syne)' }}
               >
                 SEONGHYE
@@ -44,7 +44,7 @@ export default function Hero() {
                 className="flex items-baseline gap-4 flex-wrap"
               >
                 <span
-                  className="text-[clamp(2.4rem,6vw,5rem)] font-extrabold text-[#0D2236] leading-[0.9] tracking-tight"
+                  className="text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold text-[#0D2236] leading-[0.9] tracking-tight"
                   style={{ fontFamily: 'var(--font-syne)' }}
                 >
                   PARK
@@ -80,15 +80,6 @@ export default function Hero() {
                 style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
               >
                 Projects
-              </a>
-              <a
-                href={profile.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 border border-[#1677C8]/40 text-[#1677C8] text-[10px] font-bold tracking-[0.3em] uppercase hover:border-[#1677C8] hover:bg-[#1677C8]/5 transition-colors"
-                style={{ fontFamily: 'var(--font-ibm-plex-mono)' }}
-              >
-                Resume ↗
               </a>
             </motion.div>
           </div>

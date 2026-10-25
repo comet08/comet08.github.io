@@ -17,7 +17,6 @@ social: {
     twitter?: string
     blog?: string
   }
-  resume: string
 }
 
 export type SkillLevel = 'expert' | 'proficient' | 'learning'
