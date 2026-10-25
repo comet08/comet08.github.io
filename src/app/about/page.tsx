@@ -8,7 +8,7 @@ import Contact from '@/components/sections/Contact'
 
 export const metadata = {
   title: '박성혜 — Developer',
-  description: '프론트엔드에서 시작해 AI 에이전트 서비스를 개발하는 5년차 개발자입니다.',
+  description: '통신·상담 앱과 웹, 앱↔웹뷰 연동, AI 응답 스트리밍을 만들어 온 5년차 개발자입니다.',
 }
 
 export default function AboutPage() {

@@ -39,10 +39,10 @@ export const metadata: Metadata = {
   },
   title: '박성혜 — Developer',
   description:
-    '프론트엔드에서 시작해 AI 에이전트 서비스를 개발하는 5년차 개발자 박성혜입니다.',
+    '통신·상담 앱과 웹, 앱↔웹뷰 연동, AI 응답 스트리밍을 만들어 온 5년차 개발자 박성혜입니다.',
   openGraph: {
     title: '박성혜 — Developer',
-    description: '문제를 정의하고 검증하며, 프론트엔드 경험을 AI 에이전트 개발로 확장하고 있습니다.',
+    description: '통신·상담 앱과 웹, 앱↔웹뷰 연동, AI 응답 스트리밍을 만들어 온 5년차 개발자 박성혜입니다.',
     type: 'website',
     images: [OG_IMAGE],
   },
