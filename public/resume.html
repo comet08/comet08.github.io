@@ -327,8 +327,8 @@
   <section class="section">
     <div class="section-title">Summary</div>
     <p class="summary">
-      통신·상담 도메인의 앱과 웹을 개발하며, 앱과 웹의 경계, 백엔드 지연, API 스펙 불일치처럼 서비스와 팀을 막는 문제를 직접 찾아 구조로 풀어 온 프론트엔드 개발자입니다.
-      최근에는 금융 상담 도메인의 LLM 에이전트를 서버에서 개발하며, 프론트의 스트리밍 SDK 경험과 함께 AI 응답이 흐르는 양쪽을 모두 다뤘고, 출력이 어디서 틀리는지 도메인 전문가와 검증하는 방식을 익혔습니다.
+      통신·상담 서비스의 앱과 웹을 개발하며, 앱·웹 경계, 백엔드 의존, API 스펙 불일치처럼 개발을 막는 문제를 직접 찾아 구조로 풀어 왔습니다.
+      최근에는 AI 에이전트를 서버에서 개발하며, 프론트의 스트리밍 경험과 함께 AI 응답이 흐르는 양쪽을 다뤘습니다.
     </p>
   </section>
 
@@ -372,7 +372,7 @@
         </div>
         <ul class="highlights">
           <li>금융 도메인 특화 AI 에이전트의 메인 로직을 LangChain으로 개발</li>
-          <li>AI 서버 공통 코어 패키지 개발</li>
+          <li>B2B 대응을 위한 AI 서버 공통 코어 패키지 개발</li>
           <li>도메인 특화 지식 검색 에이전트 — 도메인 전문가 검증으로 필수 정보와 답변 형식의 중요성을 확인하고, 피드백 반영과 재검증을 반복해 출시</li>
         </ul>
         <div class="tech-tags">
@@ -388,12 +388,10 @@
           <span class="role-period">2024.05 – 2025.12</span>
         </div>
         <ul class="highlights">
-          <li>Electron 상담 어드바이저 앱 — 상담 중 여러 창이 함께 떠서 앱이 가려지는 문제를 웹↔앱 IPC로 "항상 위에 두기" 기능으로 해결. 앱을 다시 클릭하면 여러 개 뜨던 것을 단일 인스턴스로 제한하고 기존 앱이 포그라운드로 올라오게 수정</li>
-          <li>AI 채팅 스트리밍 — 커스텀 SSE 스트리밍 패키지를 만들어 상담 어드바이저·AI 헬프데스크에서 공통으로 사용. 사내 AI 채팅 패키지 a2kit에서는 타입 선언만 있던 부분을 실제 구현으로 대체하고, 앱마다 다른 메시지 구조를 타입 파라미터로 주입하는 제네릭 구조로 설계</li>
+          <li>Electron 상담 어드바이저 앱 — 상담 중 여러 창이 함께 떠서 앱이 가려지는 문제를 웹↔앱 IPC로 창을 제어하는 기능으로 해결. 앱을 다시 클릭하면 여러 개 뜨던 것을 단일 인스턴스로 제한하고 기존 앱이 포그라운드로 올라오게 수정</li>
+          <li>AI 채팅 스트리밍 — 커스텀 SSE 스트리밍 패키지를 만들어 여러 서비스에서 공통으로 사용. 사내 AI 채팅 패키지 a2kit에서는 타입 선언만 있던 부분을 실제 구현으로 대체하고, 앱마다 다른 메시지 구조를 타입 파라미터로 주입하는 제네릭 구조로 설계</li>
           <li>OpenAPI 코드젠 — 개발 중 스펙 불일치로 화면이 깨지고 맞추는 데 시간이 드는 문제를 겪고, 동료들도 같은 불편을 겪고 있음을 확인해 구축. 생성 모델과 앱 도메인 모델의 경계를 분리</li>
           <li>Mock 개발 환경 — PoC 일정이 촉박한 상황에서 백엔드를 기다리지 않도록 bun 기반 STOMP Mock 서버로 WebSocket 흐름을 로컬에서 재현. 런타임에 목 응답을 제어하는 Mock DevTool(MSW 기반으로 재설계)로 팀 전체의 백엔드 독립 개발·QA 지원</li>
-          <li>공통 라이브러리(SONA) — 너겟에서 쓰던 유틸·훅을 다음 프로젝트에서도 쓰도록 공통 라이브러리로 분리해 구현하고, 유틸과 React 패키지를 나눠 CJS·ESM을 동시에 지원하는 빌드 구조를 구성 (2024)</li>
-          <li>FSD 아키텍처로 운영 중인 서비스를 페이지 단위로 점진 전환</li>
         </ul>
         <div class="tech-tags">
           <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Electron</span><span class="tag">Turborepo</span><span class="tag">FSD</span><span class="tag">MSW</span><span class="tag">OpenAPI</span><span class="tag">bun</span><span class="tag">STOMP</span><span class="tag">WebSocket</span><span class="tag">SSE</span>
