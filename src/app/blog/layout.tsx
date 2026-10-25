@@ -20,6 +20,22 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', images: [OG_IMAGE.url] },
 }
 
+const themeBootstrap = `
+try {
+  const saved = localStorage.getItem('comet-blog-theme');
+  const theme = saved === 'light' || saved === 'dark'
+    ? saved
+    : (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.blogTheme = theme;
+  document.documentElement.style.colorScheme = theme;
+} catch {}
+`
+
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      {children}
+    </>
+  )
 }
