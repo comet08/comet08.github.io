@@ -34,6 +34,9 @@ const GTM_IDS = ['GTM-PS926PLR', 'GTM-5F9J4HJC']
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  verification: {
+    google: 'bRTavZooDzU9mejueu5XaCzyitWG3NKApX2HquPPOpQ',
+  },
   title: '박성혜 — Developer',
   description:
     '프론트엔드에서 시작해 AI 에이전트 서비스를 개발하는 5년차 개발자 박성혜입니다.',
